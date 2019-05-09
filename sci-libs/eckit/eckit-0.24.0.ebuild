@@ -27,7 +27,11 @@ DEPEND="dev-util/cmake
         dev-lang/perl
         app-doc/doxygen
         virtual/pkgconfig
-        sys-libs/ncurses"
+        sys-libs/ncurses
+	sci-libs/netcdf
+	sci-libs/netcdf-cxx
+	sci-libs/netcdf-fortran
+"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -36,6 +40,7 @@ src_configure() {
     CMAKE_BUILD_TYPE="Release"
     local mycmakeargs=(
         -DCMAKE_MODULE_PATH="/usr/share/ecbuild/cmake"
+        -DINSTALL_LIB_DIR="$(get_libdir)"
     )
     cmake-utils_src_configure
 }
