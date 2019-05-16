@@ -1,2 +1,6 @@
 dev-util/ecbuild
 sci-libs/eckit
+dev-python/ford
+sci-misc/nco
+sci-libs/netcdf
+sci-misc/ncview
