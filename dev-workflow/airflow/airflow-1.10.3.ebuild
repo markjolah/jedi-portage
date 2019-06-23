@@ -18,10 +18,15 @@ KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="<dev-python/alembic-1.0[${PYTHON_USEDEP}]
-         dev-python/cached-property[${PYTHON_USEDEP}]
-         $(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' 'python2*')
-         dev-python/croniter[${PYTHON_USEDEP}]
-         dev-python/dill[${PYTHON_USEDEP}]
-         dev-python/dumb-init[${PYTHON_USEDEP}]
+         >=dev-python/cached-property-1.5.1[${PYTHON_USEDEP}]
+         $(python_gen_cond_dep '>=dev-python/configparser-3.5.0[${PYTHON_USEDEP}]' 'python2*')
+         >=dev-python/croniter-0.3.17[${PYTHON_USEDEP}]
+         >=dev-python/dill-0.2.2[${PYTHON_USEDEP}]
+         >=dev-python/dumb-init-1.2.2[${PYTHON_USEDEP}]
+         <dev-python/flask-2[${PYTHON_USEDEP}]
+         >=dev-python/flask-appbuilder-1.12.5[${PYTHON_USEDEP}]
+         <dev-python/flask-caching-1.4.0[${PYTHON_USEDEP}]
+         >=dev-python/flask-login-0.3[${PYTHON_USEDEP}]
+         
         "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

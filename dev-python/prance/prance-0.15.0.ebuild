@@ -7,22 +7,20 @@ PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1
 
-MY_PN="bagit-python"
-MY_P="$MY_PN-$PV"
+DESCRIPTION="Resolving Swagger/OpenAPI 2.0 and 3.0 Parser"
+HOMEPAGE="https://jfinkhaeuser.github.io/prance"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-DESCRIPTION="Work with BagIt packages from Python."
-HOMEPAGE="https://github.com/LibraryOfCongress/bagit-python"
-SRC_URI="https://github.com/LibraryOfCongress/${MY_PN}/archive/v${PV}.tar.gz"
-LICENSE="public-domain"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="test"
+IUSE="icu test"
 
 RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+        icu? ( dev-python/pyicu )
         test? ( dev-python/mock )
        "
-S="$WORKDIR/$MY_P"
 
 python_prepare_all() {
     #Fix version in setup.py

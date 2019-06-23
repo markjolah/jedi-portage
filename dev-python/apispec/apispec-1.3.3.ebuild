@@ -20,11 +20,12 @@ DEPEND="${RDEPEND}
     dev-python/setuptools[${PYTHON_USEDEP}]
     test? ( dev-python/bottle[${PYTHON_USEDEP}]
             dev-python/marshmallow[${PYTHON_USEDEP}]
-            dev-python/pytest[${PYTHON_USEDEP}] )
+            dev-python/pytest[${PYTHON_USEDEP}]
+            dev-python/prance[${PYTHON_USEDEP}] )
     "
 
 src_prepare() {
-    rm tests/test_swagger.py || die
+#     rm tests/test_swagger.py || die
     distutils-r1_src_prepare
 }
 
