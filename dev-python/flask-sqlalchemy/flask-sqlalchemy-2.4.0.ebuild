@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
     doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 # Patch out un-needed d'loading of obj.inv files in doc build
-PATCHES=( "${FILESDIR}"/2.3.2-mapping.patch )
+#PATCHES=( "${FILESDIR}"/2.3.2-mapping.patch )
 
 # Req'd for tests in py3
 DISTUTILS_IN_SOURCE_BUILD=1
