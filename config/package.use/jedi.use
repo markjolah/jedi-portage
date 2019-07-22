@@ -1,0 +1,9 @@
+dev-workflow/cylc gui
+sci-libs/netcdf examples hdf mpi test tools
+sci-libs/eckit test
+sci-libs/netcdf dap
+sci-misc/nco dap
+sci-libs/netcdf mpi
+sci-libs/hdf5 mpi -cxx -threads
+#sci-libs/hdf5 cxx
+dev-lua/luarocks openssl

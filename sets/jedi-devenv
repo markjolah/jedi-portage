@@ -1,0 +1,7 @@
+sys-process/htop
+sys-devel/gdb
+dev-util/valgrind
+app-misc/screen
+app-misc/tmux
+app-editors/nano
+

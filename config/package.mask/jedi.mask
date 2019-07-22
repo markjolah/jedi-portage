@@ -1,0 +1,5 @@
+#=sci-libs/eckit-0.24.0
+#MPI_CXX linking is broken
+>=dev-util/ecbuild-2.10.0
+>=dev-python/marshmallow-3
+>=dev-python/jsonschema-3
