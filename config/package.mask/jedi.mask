@@ -3,3 +3,4 @@
 >=dev-util/ecbuild-2.10.0
 >=dev-python/marshmallow-3
 >=dev-python/jsonschema-3
+>=app-admin/eselect-1.4.14
