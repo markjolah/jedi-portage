@@ -1,0 +1,52 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index caa0e71..47fbe68 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -342,18 +342,6 @@ if(BUILD_TESTING OR LAPACKE_WITH_TMG)
+   set(ALL_TARGETS ${ALL_TARGETS} tmglib)
+ endif()
+ 
+-# Export lapack targets, not including lapacke, from the
+-# install tree, if any.
+-set(_lapack_config_install_guard_target "")
+-if(ALL_TARGETS)
+-  install(EXPORT lapack-targets
+-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/lapack-${LAPACK_VERSION})
+-
+-  # Choose one of the lapack targets to use as a guard for
+-  # lapack-config.cmake to load targets from the install tree.
+-  list(GET ALL_TARGETS 0 _lapack_config_install_guard_target)
+-endif()
+-
+ # Include cblas in targets exported from the build tree.
+ if(CBLAS)
+   set(ALL_TARGETS ${ALL_TARGETS} cblas)
+@@ -374,28 +362,8 @@ if(ALL_TARGETS)
+   list(GET ALL_TARGETS 0 _lapack_config_build_guard_target)
+ endif()
+ 
+-configure_file(${LAPACK_SOURCE_DIR}/CMAKE/lapack-config-build.cmake.in
+-  ${LAPACK_BINARY_DIR}/lapack-config.cmake @ONLY)
+-
+-
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/lapack.pc.in ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc @ONLY)
+   install(FILES
+   ${CMAKE_CURRENT_BINARY_DIR}/lapack.pc
+   DESTINATION ${PKG_CONFIG_DIR}
+   )
+-
+-configure_file(${LAPACK_SOURCE_DIR}/CMAKE/lapack-config-install.cmake.in
+-  ${LAPACK_BINARY_DIR}/CMakeFiles/lapack-config.cmake @ONLY)
+-
+-include(CMakePackageConfigHelpers)
+-write_basic_package_version_file(
+-  ${LAPACK_BINARY_DIR}/lapack-config-version.cmake
+-  VERSION ${LAPACK_VERSION}
+-  COMPATIBILITY SameMajorVersion
+-  )
+-
+-install(FILES
+-  ${LAPACK_BINARY_DIR}/CMakeFiles/lapack-config.cmake
+-  ${LAPACK_BINARY_DIR}/lapack-config-version.cmake
+-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/lapack-${LAPACK_VERSION}
+-  )
