@@ -4,3 +4,5 @@
 >=dev-python/marshmallow-3
 >=dev-python/jsonschema-3
 >=app-admin/eselect-1.4.14
+>=sci-libs/blas-reference-4
+>=sci-libs/cblas-reference-4
