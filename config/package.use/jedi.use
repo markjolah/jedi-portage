@@ -39,3 +39,4 @@ app-text/texlive-core xetex
 media-libs/harfbuzz icu
 x11-libs/cairo xcb
 x11-libs/gdk-pixbuf jpeg
+sys-libs/timezone-data leaps_timezone
