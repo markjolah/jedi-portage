@@ -1,5 +1,5 @@
 [jedi sets]
 class = portage.sets.files.StaticFileSet
 multiset = true
-directory = /sysdisk1/users/molah/github/jedi-portage/sets
+directory = /olah/jedi-portage/sets
 
