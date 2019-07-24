@@ -4,4 +4,9 @@ dev-util/valgrind
 app-misc/screen
 app-misc/tmux
 app-editors/nano
+dev-vcs/git
+dev-util/cmake
+dev-python/numpy
+dev-python/scipy
+dev-python/matplotlib
 

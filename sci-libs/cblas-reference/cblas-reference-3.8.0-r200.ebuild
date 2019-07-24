@@ -1,13 +1,13 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
 NUMERIC_MODULE_NAME="refcblas"
 
-inherit alternatives-2 cmake-utils eutils fortran-2 numeric-int64-multibuild python-any-r1 toolchain-funcs
+inherit alternatives-2 cmake-utils eutils fortran-2 numeric-int64-multibuild distutils-r1 toolchain-funcs
 
 LPN=lapack
 LPV=3.8.0

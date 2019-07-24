@@ -149,7 +149,7 @@ src_install() {
 			OPENBLAS_INCLUDE_DIR='$(PREFIX)'/usr/include/${PN} \
 			OPENBLAS_LIBRARY_DIR='$(PREFIX)'/usr/$(get_libdir)
 		if ! use static-libs; then
-			rm "${ED}"usr/$(get_libdir)/lib*.a || die
+			rm "${ED}"/usr/$(get_libdir)/lib*.a || die
 		fi
 
 		local openblas_abi_cflags=$(get_openblas_abi_cflags)

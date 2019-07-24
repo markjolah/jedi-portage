@@ -16,3 +16,10 @@ dev-qt/qtgui -libinput
 #media-libs/libsdl X
 virtual/mpi romio
 sys-cluster/openmpi romio
+sci-libs/openblas static-libs int64
+sci-libs/blas-reference static-libs int64
+sci-libs/cblas-reference static-libs int64
+sci-libs/lapack-reference static-libs int64
+virtual/blas static-libs int64
+virtual/cblas static-libs int64
+virtual/lapack static-libs int64
