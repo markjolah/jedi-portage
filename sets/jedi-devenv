@@ -7,6 +7,7 @@ app-editors/nano
 dev-vcs/git
 dev-util/cmake
 dev-python/numpy
-dev-python/scipy
+sci-libs/scipy
 dev-python/matplotlib
-
+dev-python/pandas
+dev-python/pytables

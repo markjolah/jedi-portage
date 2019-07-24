@@ -23,3 +23,19 @@ sci-libs/lapack-reference static-libs int64
 virtual/blas static-libs int64
 virtual/cblas static-libs int64
 virtual/lapack static-libs int64
+dev-python/numpy lapack
+dev-python/pillow jpeg jpeg2k tiff lcms
+media-libs/tiff jpeg
+media-gfx/graphviz pdf postscript python svg
+media-libs/gd tiff
+sci-misc/nco hdf5
+sci-libs/hdf szip
+sci-libs/arpack mpi
+media-libs/tiff zstd
+dev-python/matplotlib cairo latex
+dev-libs/c-blosc zstd
+app-arch/zstd lz4
+app-text/texlive-core xetex
+media-libs/harfbuzz icu
+x11-libs/cairo xcb
+x11-libs/gdk-pixbuf jpeg
