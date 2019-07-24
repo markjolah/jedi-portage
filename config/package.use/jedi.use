@@ -40,3 +40,4 @@ media-libs/harfbuzz icu
 x11-libs/cairo xcb
 x11-libs/gdk-pixbuf jpeg
 sci-libs/openblas -openmp
+sys-libs/timezone-data leaps_timezone
