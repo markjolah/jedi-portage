@@ -1,5 +1,5 @@
 dev-workflow/cylc gui
-sci-libs/netcdf examples hdf mpi test tools
+sci-libs/netcdf examples mpi test tools
 sci-libs/eckit test
 sci-libs/netcdf dap
 sci-misc/nco dap
@@ -41,3 +41,4 @@ x11-libs/cairo xcb
 x11-libs/gdk-pixbuf jpeg
 sci-libs/openblas -openmp
 sys-libs/timezone-data leaps_timezone
+=sci-libs/scipy-1.1.0 -python_targets_python3_7

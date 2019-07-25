@@ -1,0 +1,42 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 79f55bd2..696e6433 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,8 @@ cmake_minimum_required( VERSION 3.1 FATAL_ERROR )
+ 
+ project( eckit CXX )
+ 
+-set( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/../ecbuild/cmake")
++find_package(ecbuild REQUIRED)
++set( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${ECBUILD_CMAKE_DIR} ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/../ecbuild/cmake")
+ 
+ include( ecbuild_system NO_POLICY_SCOPE )
+ 
+@@ -27,10 +28,10 @@ ecbuild_add_option( FEATURE SANDBOX
+ 
+ ### eckit::mpi
+ 
+-ecbuild_add_option( FEATURE MPI
++ecbuild_add_option( FEATURE ECKIT_MPI
+                     DEFAULT ON
+                     DESCRIPTION "Use system MPI libraries"
+-                    REQUIRED_PACKAGES "MPI COMPONENTS C" )
++                    REQUIRED_PACKAGES "MPI COMPONENTS Fortran C CXX" )
+ 
+ ### eckit::cmd
+ 
+@@ -222,3 +223,14 @@ endforeach()
+ ecbuild_install_project( NAME ${PROJECT_NAME} )
+ 
+ ecbuild_print_summary()
++
++MESSAGE(STATUS "<<< Gentoo configuration >>>
++Build type      ${CMAKE_BUILD_TYPE}
++Install path    ${CMAKE_INSTALL_PREFIX}
++Compiler flags:
++C               ${CMAKE_C_FLAGS}
++C++             ${CMAKE_CXX_FLAGS}
++Linker flags:
++Executable      ${CMAKE_EXE_LINKER_FLAGS}
++Module          ${CMAKE_MODULE_LINKER_FLAGS}
++Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")
