@@ -105,9 +105,10 @@ python_prepare_all() {
 }
 
 python_compile() {
+	export MAKEOPTS=-j1
 	${EPYTHON} tools/cythonize.py || die
 	distutils-r1_python_compile \
-		${SCIPY_FCONFIG} -j1
+		${SCIPY_FCONFIG}
 }
 
 python_test() {
