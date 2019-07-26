@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="test"
 
-RDEPEND=""
+RDEPEND=">=dev-python/bitstring-3.1.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
         test? ( dev-python/pytest )
        "
