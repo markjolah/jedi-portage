@@ -11,7 +11,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 #IUSE="test"
- 
+
 DEPEND="dev-util/cmake
         dev-util/ecbuild
         sys-cluster/openmpi
@@ -35,11 +35,12 @@ DEPEND="dev-util/cmake
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
+PATCHES=( "${FILESDIR}/${P}-ecbuild-cmake-fix.patch" )
+
 src_configure() {
     filter-flags -Wl,--as-needed
     CMAKE_BUILD_TYPE="Release"
     local mycmakeargs=(
-        -DCMAKE_MODULE_PATH="/usr/share/ecbuild/cmake"
         -DINSTALL_LIB_DIR="$(get_libdir)"
     )
     cmake-utils_src_configure

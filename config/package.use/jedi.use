@@ -1,5 +1,5 @@
 dev-workflow/cylc gui
-sci-libs/netcdf examples hdf mpi test tools
+sci-libs/netcdf examples mpi test tools
 sci-libs/eckit test
 sci-libs/netcdf dap
 sci-misc/nco dap
@@ -10,10 +10,6 @@ dev-lua/luarocks openssl
 dev-python/markdown pygments
 media-libs/gd jpeg truetype png fontconfig
 dev-qt/qtgui -libinput
-#x11-libs/libxcb xkb
-#x11-libs/libxkbcommon X
-#dev-libs/libpcre2 pcre16
-#media-libs/libsdl X
 virtual/mpi romio
 sys-cluster/openmpi romio
 sci-libs/openblas static-libs int64
@@ -39,4 +35,8 @@ app-text/texlive-core xetex
 media-libs/harfbuzz icu
 x11-libs/cairo xcb
 x11-libs/gdk-pixbuf jpeg
+sci-libs/openblas -openmp
 sys-libs/timezone-data leaps_timezone
+sci-libs/scipy -python_targets_python2_7
+dev-python/pandas -python_targets_python2_7
+dev-python/bottleneck -python_targets_python2_7
