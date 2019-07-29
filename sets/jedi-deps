@@ -25,4 +25,6 @@ sci-libs/blas-reference
 sci-libs/cblas-reference
 sci-libs/lapack-reference
 virtual/szip
+dev-vcs/git
+dev-vcs/git-lfs
 
