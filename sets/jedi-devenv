@@ -12,3 +12,4 @@ dev-python/matplotlib
 dev-python/pandas
 dev-python/pytables
 dev-python/pybufrkit
+dev-python/netcdf4-python

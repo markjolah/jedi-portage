@@ -2,6 +2,7 @@ dev-workflow/cylc gui
 sci-libs/netcdf examples mpi test tools
 sci-libs/eckit test
 sci-libs/netcdf dap
+sci-libs/netcdf hdf
 sci-misc/nco dap
 sci-libs/netcdf mpi
 sci-libs/hdf5 mpi -cxx -threads
