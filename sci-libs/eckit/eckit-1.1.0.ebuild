@@ -38,7 +38,7 @@ BDEPEND=""
 PATCHES=( "${FILESDIR}/${P}-ecbuild-cmake-fix.patch" )
 
 src_configure() {
-    filter-flags -Wl,--as-needed
+    filter-flags -Wl,--as-needed -march=native
     CMAKE_BUILD_TYPE="Release"
     local mycmakeargs=(
         -DINSTALL_LIB_DIR="$(get_libdir)"
