@@ -132,7 +132,7 @@ src_install() {
 	fi
 
 	emake \
-		DESTDIR="${ED}" \
+		DESTDIR="${D}" \
 		LIBDIR="${EPREFIX}"/$(get_libdir) \
 		SBINDIR="${EPREFIX}"/sbin \
 		CONFDIR="${EPREFIX}"/etc/iproute2 \
@@ -147,7 +147,7 @@ src_install() {
 	mv "${ED}"/{s,}bin/ip || die #330115
 
 	dolib.a lib/libnetlink.a
-	insinto "${EROOT}/usr/include"
+	insinto /usr/include
 	doins include/libnetlink.h
 	# This local header pulls in a lot of linux headers it
 	# doesn't directly need.  Delete this header that requires
