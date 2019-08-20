@@ -45,3 +45,5 @@ sci-libs/netcdf static-libs
 sci-libs/netcdf-cxx static-libs
 sci-libs/netcdf-fortran static-libs
 net-misc/curl static-libs
+dev-libs/openssl static-libs
+sys-libs/zlib static-libs
