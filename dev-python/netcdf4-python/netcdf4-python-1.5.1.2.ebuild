@@ -26,7 +26,7 @@ RDEPEND="dev-python/numpy
          sci-libs/netcdf:=[hdf,hdf5]"
 DEPEND="sci-libs/hdf5
 	sci-libs/netcdf
-        mpi? ( sci-lib/mpi4py )
+        mpi? ( dev-python/mpi4py )
 	pnetcdf? ( sci-libs/pnetcdf )
         ${RDEPEND}"
 
