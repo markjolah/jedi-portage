@@ -49,3 +49,4 @@ dev-libs/openssl static-libs
 sys-libs/zlib static-libs
 dev-lang/python sqlite
 net-libs/zeromq drafts
+dev-python/netcdf4-python pnetcdf

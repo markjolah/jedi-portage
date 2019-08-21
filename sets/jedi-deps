@@ -1,6 +1,8 @@
 dev-util/ecbuild
 sci-libs/eckit
 dev-python/ford
+sci-libs/pnetcdf
+sci-libs/hdf5
 sci-misc/nco
 sci-libs/netcdf
 sci-libs/netcdf-cxx
