@@ -13,12 +13,9 @@ RESTRICT="primaryuri"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="+fortran +cxx"
- 
-DEPEND="sys-cluster/openmpi
-        sci-libs/netcdf
-        cxx? ( sci-libs/netcdf-cxx )
-        fortran? ( sci-libs/netcdf-fortran )"
+IUSE=""
+
+DEPEND="sys-cluster/openmpi"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
