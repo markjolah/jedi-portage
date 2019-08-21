@@ -17,7 +17,8 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test pnetcdf"
+IUSE="test mpi pnetcdf"
+REQUIRED_USE="pnetcdf? ( mpi )"
 
 RDEPEND="dev-python/numpy
          dev-python/cftime
@@ -25,6 +26,7 @@ RDEPEND="dev-python/numpy
          sci-libs/netcdf:=[hdf,hdf5]"
 DEPEND="sci-libs/hdf5
 	sci-libs/netcdf
+        mpi? ( sci-lib/mpi4py )
 	pnetcdf? ( sci-libs/pnetcdf )
         ${RDEPEND}"
 
@@ -32,6 +34,7 @@ S="${WORKDIR}"/${MY_P}
 
 python_compile() {
     local -x HDF5_DIR="$EPREFIX/usr/"
+    local -x USE_NCCONFIG=1
     distutils-r1_python_compile
 }
 

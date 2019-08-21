@@ -51,3 +51,4 @@ dev-lang/python sqlite
 net-libs/zeromq drafts
 dev-python/netcdf4-python pnetcdf
 sci-libs/netcdf pnetcdf
+dev-python/netcdf4-python mpi
