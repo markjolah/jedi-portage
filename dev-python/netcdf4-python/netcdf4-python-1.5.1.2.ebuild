@@ -42,3 +42,8 @@ python_test() {
     cd test || die
     ${PYTHON} run_all.py || die
 }
+
+python_install() {
+    local -x HDF5_DIR="$EPREFIX/usr/"
+    distutils-r1_python_install
+}
