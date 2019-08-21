@@ -29,5 +29,5 @@ src_prepare() {
     default
 }
 src_configure() {
-    econf --enable-netcdf4 --enable-shared=yes
+    econf --disable-netcdf4 --enable-shared=yes
 }

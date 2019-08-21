@@ -12,13 +12,14 @@ SRC_URI="https://github.com/Unidata/netcdf-c/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="UCAR-Unidata"
 SLOT="0/13"
 KEYWORDS="amd64 ~arm ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+dap examples hdf +hdf5 mpi static-libs szip test tools"
+IUSE="+dap examples hdf +hdf5 mpi static-libs szip test tools pnetcdf"
 
 RDEPEND="
 	dap? ( net-misc/curl:0= )
 	hdf? ( sci-libs/hdf:0= sci-libs/hdf5:0= )
 	hdf5? ( sci-libs/hdf5:0=[hl(+),mpi=,szip=,zlib] )"
-DEPEND="${RDEPEND}"
+DEPEND="pnetcdf? ( sci-libs/pnetcdf )
+        ${RDEPEND}"
 # doc generation is missing many doxygen files in tar ball
 #	doc? ( app-doc/doxygen[dot] )"
 
@@ -34,6 +35,7 @@ src_configure() {
 	econf "${myconf}" \
 		--disable-examples \
 		--disable-dap-remote-tests \
+        $(use_enable pnetcdf) \
 		$(use_enable dap) \
 		$(use_enable hdf hdf4) \
 		$(use_enable hdf5 netcdf-4) \
