@@ -14,3 +14,4 @@ dev-python/pytables
 dev-python/pybufrkit
 dev-python/netcdf4-python
 dev-python/ipython
+app-admin/lmod

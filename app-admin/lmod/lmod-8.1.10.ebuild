@@ -11,13 +11,14 @@ SRC_URI="https://github.com/TACC/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE=""
+KEYWORDS="amd64"
+IUSE="+tcl"
 
 MY_PN="Lmod"
 MY_P="${MY_PN}-${PV}"
 
 DEPEND="dev-lua/luaposix
+        tcl? ( dev-lang/tcl:0 )
         >=dev-lua/luafilesystem-1.6.2"
 RDEPEND="${DEPEND}"
 

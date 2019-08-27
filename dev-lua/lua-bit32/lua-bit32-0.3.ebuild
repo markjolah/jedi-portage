@@ -11,9 +11,8 @@ DESCRIPTION="A Lua5.2+ bit manipulation library"
 HOMEPAGE="https://github.com/keplerproject/lua-compat-5.2"
 SRC_URI="https://github.com/keplerproject/lua-compat-5.2/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
-READMES=( README.md )
 
-DEPENDS="dev-lang/lua:0="
+DEPEND="<dev-lang/lua-5.2"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
