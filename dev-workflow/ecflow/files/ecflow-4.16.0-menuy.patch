@@ -1,0 +1,21 @@
+diff --git a/view/src/menuy.y b/view/src/menuy.y
+index fdcf69e..047776e 100644
+--- a/view/src/menuy.y
++++ b/view/src/menuy.y
+@@ -34,6 +34,7 @@ extern int yylineno;
+  void yyerror(char * msg);
+  int yydebug;
+ #elif defined (linux)
++ int yylex();
+  extern char yytext[];
+  void yyerror(char * msg);
+  int yydebug;
+@@ -239,7 +240,7 @@ action  : STRING      { $$ = menus_command(strdup(yytext));  }
+ 	| MENU        { $$ = menus_sub_menu(); }
+ 	| WINDOW '(' name ')'  { $$ = menus_window($3); }
+ 	| PLUG        { $$ = menus_internal_host_plug(); }
+-        | COMP '(' name ',' name ')' { $$ = menus_internal_host_comp($3, $5); }
++        | COMP '(' name ',' name ')' { $$ = menus_internal_host_compare($3, $5); }
+ 	;
+ 
+ question: STRING { $$ = strdup(yytext); }

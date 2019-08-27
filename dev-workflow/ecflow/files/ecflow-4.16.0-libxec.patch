@@ -1,0 +1,12 @@
+diff --git a/view/src/libxec/xec_Regexp.c b/view/src/libxec/xec_Regexp.c
+index ec424fa..8dfd79c 100644
+--- a/view/src/libxec/xec_Regexp.c
++++ b/view/src/libxec/xec_Regexp.c
+@@ -20,6 +20,7 @@ Include regexp once for compatibility
+ ======================*/
+ 
+ #include <stdio.h>
++#include <string.h>
+ 
+ #define ESIZE 1024
+ #define NO_REGEXP
