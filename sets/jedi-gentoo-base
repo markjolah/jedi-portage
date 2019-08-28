@@ -1,3 +1,9 @@
 dev-vcs/rcs
 app-portage/gentoolkit
 app-portage/cpuid2cpuflags
+sys-process/htop
+app-misc/screen
+app-misc/tmux
+app-editors/vim
+app-portage/eix
+app-portage/portage-utils

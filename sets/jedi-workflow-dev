@@ -1,0 +1,5 @@
+dev-workflow/cylc
+dev-workflow/ecflow
+dev-db/postgresql
+dev-python/psycopg
+sys-cluster/slurm

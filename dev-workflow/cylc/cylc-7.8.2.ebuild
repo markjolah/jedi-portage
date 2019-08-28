@@ -47,6 +47,6 @@ src_compile() {
 }
 
 src_install() {
-    dodir "${EROOT%/}/opt/"
+    #dodir "/opt/"
     mv "${S}" "${ED%/}/opt/" || die
 }

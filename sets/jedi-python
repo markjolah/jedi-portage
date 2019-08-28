@@ -1,11 +1,3 @@
-sys-process/htop
-sys-devel/gdb
-dev-util/valgrind
-app-misc/screen
-app-misc/tmux
-app-editors/nano
-dev-vcs/git
-dev-util/cmake
 dev-python/numpy
 #sci-libs/scipy
 dev-python/matplotlib
@@ -14,4 +6,7 @@ dev-python/pytables
 dev-python/pybufrkit
 dev-python/netcdf4-python
 dev-python/ipython
-app-admin/lmod
+dev-python/click
+dev-python/ruamel-yaml
+dev-python/jinja
+dev-python/xarray
