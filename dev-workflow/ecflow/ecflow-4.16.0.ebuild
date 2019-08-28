@@ -70,7 +70,7 @@ src_configure() {
     BOOST_ROOT="${BUILD_DIR}/boost"
     "${S}/build_scripts/boost_build.sh" || die
     append-cxxflags -Wno-deprecated-declarations
-    append-flags "-isystem /usr/include/tirpc"
+    append-flags "-isystem ${EROOT%/}/usr/include/tirpc"
     local mycmakeargs=(
         -DPython3_FIND_STRATEGY="LOCATION"
         -DPYTHON_EXECUTABLE="${PYTHON}"
