@@ -7,3 +7,5 @@ app-misc/tmux
 app-editors/vim
 app-portage/eix
 app-portage/portage-utils
+app-editors/nano
+app-portage/layman
