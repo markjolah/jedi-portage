@@ -62,5 +62,6 @@ x11-libs/libxcb xkb
 x11-libs/libxkbcommon X
 dev-libs/libpcre2 pcre16
 sys-cluster/slurm lua
-sys-cluster/slurm hdf5 html
+sys-cluster/slurm -html
+sys-cluster/slurm -pam
 sci-libs/mkl int64

@@ -2,3 +2,4 @@ sys-devel/gdb
 dev-util/valgrind
 app-admin/lmod
 sci-libs/libbufr
+app-arch/pigz
