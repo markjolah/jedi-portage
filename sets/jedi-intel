@@ -1,0 +1,4 @@
+dev-libs/intel-common
+sci-libs/mkl
+sci-libs/mkl-rt
+sys-apps/intel-performance-counter-monitor
