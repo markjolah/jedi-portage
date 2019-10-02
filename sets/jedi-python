@@ -10,3 +10,4 @@ dev-python/click
 dev-python/ruamel-yaml
 dev-python/jinja
 dev-python/xarray
+dev-python/psutil
