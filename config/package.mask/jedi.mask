@@ -9,3 +9,4 @@
 <virtual/lapack-3.8.0-r200
 sci-libs/openblas::gentoo
 #=dev-qt/qtgui-5.12.5
+sys-cluster/openmpi
