@@ -14,7 +14,7 @@ KEYWORDS="amd64 x86"
 
 DEPEND="dev-util/cmake
         dev-util/ecbuild
-        sys-cluster/openmpi
+        virtual/mpi
         dev-vcs/git
         dev-cpp/eigen
         dev-libs/openssl
