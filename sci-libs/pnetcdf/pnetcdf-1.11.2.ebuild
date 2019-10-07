@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="sys-cluster/openmpi"
+DEPEND="virtual/mpi"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
