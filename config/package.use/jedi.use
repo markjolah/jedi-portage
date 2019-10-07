@@ -64,4 +64,5 @@ dev-libs/libpcre2 pcre16
 sys-cluster/slurm lua
 sys-cluster/slurm -html
 sys-cluster/slurm -pam
-sci-libs/mkl int64
+#sci-libs/mkl int64
+#sci-libs/gotoblas2 int64
