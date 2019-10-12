@@ -68,3 +68,4 @@ sys-cluster/slurm -pam
 #sci-libs/gotoblas2 int64
 sys-libs/zlib minizip
 sys-cluster/mpich romio
+dev-python/matplotlib tk
