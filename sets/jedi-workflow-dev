@@ -3,3 +3,4 @@ dev-workflow/ecflow
 dev-db/postgresql
 dev-python/psycopg
 sys-cluster/slurm
+app-text/pelican

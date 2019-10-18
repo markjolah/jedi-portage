@@ -21,4 +21,5 @@ IUSE="test"
 RDEPEND=">=dev-python/bitstring-3.1.3[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
         test? ( dev-python/pytest )
+	dev-python/pytest-runner
        "

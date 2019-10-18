@@ -20,7 +20,7 @@ IUSE="+fortran +pnetcdf +mpiio"
 DEPEND="dev-util/cmake
         fortran? ( sys-devel/gcc[fortran] )
         pnetcdf? ( sci-libs/pnetcdf )
-        sys-cluster/openmpi[romio]"
+        virtual/mpi[romio]"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
