@@ -1,12 +1,10 @@
-#=sci-libs/eckit-0.24.0
-#MPI_CXX linking is broken
->=dev-util/ecbuild-2.10.0
+#>=dev-util/ecbuild-2.10.0
 >=dev-python/marshmallow-3
->=dev-python/jsonschema-3
+#>=dev-python/jsonschema-3
 >=app-admin/eselect-1.4.14
 <virtual/blas-3.8.0-r200
 <virtual/cblas-3.8.0-r200
 <virtual/lapack-3.8.0-r200
 sci-libs/openblas::gentoo
-#=dev-qt/qtgui-5.12.5
 sys-cluster/openmpi
+>=dev-python/sphinx-2
