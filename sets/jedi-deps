@@ -10,7 +10,6 @@ sci-libs/netcdf-fortran
 sci-misc/nco
 sci-misc/nccmp
 sci-misc/ncview
-sci-libs/ncep-bufrlib
 sci-libs/openblas
 sci-libs/blas-reference
 sci-libs/cblas-reference
