@@ -69,3 +69,4 @@ sys-cluster/slurm -pam
 sys-libs/zlib minizip
 sys-cluster/mpich romio
 dev-python/matplotlib tk
+app-text/pelican markdown
