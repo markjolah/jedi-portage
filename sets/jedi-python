@@ -15,3 +15,4 @@ dev-python/boto3
 dev-python/progressbar2
 dev-python/cartopy
 dev-python/tzlocal
+dev-python/pip
