@@ -70,3 +70,4 @@ sys-libs/zlib minizip
 sys-cluster/mpich romio
 dev-python/matplotlib tk
 dev-lang/python tk
+app-text/pelican markdown

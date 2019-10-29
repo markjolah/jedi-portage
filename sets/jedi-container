@@ -1,3 +1,4 @@
 sys-cluster/charliecloud
 sys-cluster/singularity
 app-emulation/docker
+app-admin/lmod
