@@ -1,0 +1,12 @@
+diff -ur qtbase-everywhere-src-5.13.2.orig/src/platformsupport/platformsupport.pro qtbase-everywhere-src-5.13.2/src/platformsupport/platformsupport.pro
+--- qtbase-everywhere-src-5.13.2.orig/src/platformsupport/platformsupport.pro	2019-10-25 09:16:48.000000000 +0200
++++ qtbase-everywhere-src-5.13.2/src/platformsupport/platformsupport.pro	2019-11-02 13:24:24.382862918 +0100
+@@ -11,7 +11,7 @@
+ qtConfig(freetype)|darwin|win32: \
+     SUBDIRS += fontdatabases
+ 
+-qtConfig(evdev)|qtConfig(tslib)|qtConfig(libinput)|qtConfig(integrityhid) {
++qtConfig(evdev)|qtConfig(tslib)|qtConfig(libinput)|qtConfig(integrityhid)|qtConfig(xkbcommon) {
+     SUBDIRS += input
+     input.depends += devicediscovery
+ }
