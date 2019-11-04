@@ -8,3 +8,4 @@
 sci-libs/openblas::gentoo
 sys-cluster/openmpi
 >=dev-python/sphinx-2
+>=dev-python/awscli-1.16.158
