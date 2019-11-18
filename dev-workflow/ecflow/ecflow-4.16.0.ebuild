@@ -3,7 +3,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit python-single-r1 cmake-utils flag-o-matic
+inherit python-r1 cmake-utils flag-o-matic
 
 MY_PN="ecFlow"
 MY_P="${MY_PN}-${PV}"
@@ -48,39 +48,61 @@ PATCHES=(
     "${FILESDIR}/${P}-libxec.patch"
     "${FILESDIR}/${P}-menuy.patch"
 )
+
 BUILD_DIR="${WORKDIR}/${P}-build"
+
 src_prepare() {
-    mkdir -p "${BUILD_DIR}" || die
-    echo "PYTHON: ${PYTHON}"
-    echo "BUILD_DIR: ${BUILD_DIR}"
-    ln -sf "${WORKDIR}/${BOOST_MY_P}" "${BUILD_DIR}/boost" || die
+    python_prepare() {
+        mkdir -p "${BUILD_DIR}" || die
+        echo "PYTHON: ${PYTHON}"
+        echo "BUILD_DIR: ${BUILD_DIR}"
+        cp -a "${WORKDIR}/${BOOST_MY_P}" "${BUILD_DIR}" || die
+        ln -sf "${BUILD_DIR}/${BOOST_MY_P}" "${BUILD_DIR}/boost" || die
+    }
+    python_foreach_impl python_prepare
     sed -e "s:-j2:${MAKEOPTS}:g" \
-        -e "s:-Wno-deprecated-declarations:-Wno-deprecated-declarations -Wno-parentheses:g" \
+        -e "s:-Wno-deprecated-declarations:-Wno-deprecated-declarations -Wno-parentheses -fpermissive:g" \
         -i "${S}/build_scripts/boost_build.sh" || die
     cmake-utils_src_prepare
 }
 
 src_configure() {
-    cd "${BUILD_DIR}/boost" && \
-        ./bootstrap.sh --with-python=${PYTHON}  --with-python-root=${PYTHON} || die
-    python_get_includedir
-    sed -e "s@${PYTHON}@${PYTHON} : ${PYTHON_INCLUDEDIR}@" \
-        -i "${BUILD_DIR}/boost/project-config.jam" || die
-    WK="${BUILD_DIR}" 
-    BOOST_ROOT="${BUILD_DIR}/boost"
-    "${S}/build_scripts/boost_build.sh" || die
-    append-cxxflags -Wno-deprecated-declarations
-    append-flags "-isystem ${EROOT%/}/usr/include/tirpc"
-    local mycmakeargs=(
-        -DPython3_FIND_STRATEGY="LOCATION"
-        -DPYTHON_EXECUTABLE="${PYTHON}"
-        -DENABLE_SERVER="$(usex server)"
-        -DENABLE_UI="$(usex ui)"
-        -DENABLE_GUI="$(usex gui)"
-        -DENABLE_SSL="$(usex ssl)"
-        -DBOOST_ROOT="${BOOST_ROOT}"
-    )
-    CMAKE_BUILD_TYPE="Release"
-    cmake-utils_src_configure
+    python_configure() {
+        cd "${BUILD_DIR}/boost" && \
+            ./bootstrap.sh --with-python=${PYTHON}  --with-python-root=${PYTHON} || die
+        python_get_includedir
+        sed -e "s@${PYTHON}@${PYTHON} : ${PYTHON_INCLUDEDIR}@" \
+            -i "${BUILD_DIR}/boost/project-config.jam" || die
+        WK="${BUILD_DIR}" 
+        BOOST_ROOT="${BUILD_DIR}/boost"
+        "${S}/build_scripts/boost_build.sh" || die
+        append-cxxflags -Wno-deprecated-declarations
+        append-flags "-isystem ${EROOT%/}/usr/include/tirpc"
+        local mycmakeargs=(
+            -DPython3_FIND_STRATEGY="LOCATION"
+            -DPYTHON_EXECUTABLE="${PYTHON}"
+            -DENABLE_SERVER="$(usex server)"
+            -DENABLE_UI="$(usex ui)"
+            -DENABLE_GUI="$(usex gui)"
+            -DENABLE_SSL="$(usex ssl)"
+            -DBOOST_ROOT="${BOOST_ROOT}"
+        )
+        CMAKE_BUILD_TYPE="Release"
+        cmake-utils_src_configure
+    }
+    python_foreach_impl python_configure
 }
 
+src_compile() {
+    python_compile() {
+        cmake-utils_src_compile
+    }
+    python_foreach_impl python_compile
+}
+
+src_install() {
+    python_install() {
+        cmake-utils_src_install
+    }
+    python_foreach_impl python_install
+}
