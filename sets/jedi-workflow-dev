@@ -1,7 +1,7 @@
 dev-workflow/cylc
 dev-workflow/ecflow
 dev-db/postgresql
-#dev-python/psycopg
+dev-python/psycopg
 sys-cluster/slurm
 app-text/pelican
 dev-python/statsd
