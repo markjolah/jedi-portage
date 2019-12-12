@@ -9,3 +9,4 @@ sci-libs/openblas::gentoo
 sys-cluster/openmpi
 >=dev-python/sphinx-2
 #>=dev-python/awscli-1.16.158
+=dev-python/python-dateutil-2.8.1

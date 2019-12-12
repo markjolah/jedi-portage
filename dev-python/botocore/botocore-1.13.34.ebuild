@@ -29,12 +29,12 @@ RDEPEND="
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	${RDEPEND}
 	doc? (
 		dev-python/guzzle_sphinx_theme[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	test? (
-		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/jsonschema[${PYTHON_USEDEP}]
