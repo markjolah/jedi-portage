@@ -6,15 +6,15 @@ DESCRIPTION="ECMWF CMake build scripts and modules"
 HOMEPAGE="https://github.com/JCSDA/ecbuild"
 # SRC_URI="https://github.com/ecmwf/ecbuild/archive/${PV}.tar.gz"
 # RESTRICT="primaryuri"
-EGIT_REPO_URI="https://github.com/JCSDA/eckit"
-EGIT_COMMIT="${PV}.jcsda1"
+EGIT_REPO_URI="https://github.com/JCSDA/ecbuild"
+EGIT_BRANCH="develop"
 
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
- 
+
 DEPEND="dev-util/cmake"
 RDEPEND="${DEPEND}"
 BDEPEND=""
