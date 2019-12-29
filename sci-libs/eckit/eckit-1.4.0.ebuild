@@ -34,7 +34,8 @@ DEPEND="dev-util/cmake
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-PATCHES=( "${FILESDIR}/${P}-ecbuild-cmake-fix.patch" )
+PATCHES=( "${FILESDIR}/${P}-ecbuild-cmake-fix.patch"
+	  "${FILESDIR}/${P}-new-cmake.patch" )
 
 src_configure() {
     filter-flags -Wl,--as-needed -march=native
