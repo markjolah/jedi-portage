@@ -71,10 +71,6 @@ sys-cluster/mpich romio
 dev-python/matplotlib tk
 dev-lang/python tk
 app-text/pelican markdown
-<<<<<<< HEAD
-dev-workflow/cylc  python_single_target_python2_7
-=======
 dev-workflow/cylc python_single_target_python2_7
 dev-workflow/cylc python_targets_python2_7
->>>>>>> 25fc587ddbf0533a63c1788c3f8210de1d030279
 dev-workflow/cylc -gui
