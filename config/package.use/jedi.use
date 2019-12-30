@@ -81,3 +81,4 @@ dev-python/idna python_targets_python2_7
 dev-python/pyopenssl python_targets_python2_7
 dev-python/PySocks python_targets_python2_7
 dev-python/urllib3 python_targets_python2_7
+sys-cluster/singularity python_single_target_python3_5
