@@ -74,3 +74,10 @@ app-text/pelican markdown
 dev-workflow/cylc python_single_target_python2_7
 dev-workflow/cylc python_targets_python2_7
 dev-workflow/cylc -gui
+dev-workflow/cylc -doc
+dev-python/requests python_targets_python2_7
+dev-python/chardet python_targets_python2_7
+dev-python/idna python_targets_python2_7
+dev-python/pyopenssl python_targets_python2_7
+dev-python/PySocks python_targets_python2_7
+dev-python/urllib3 python_targets_python2_7
