@@ -46,7 +46,7 @@ COMMON_DEPEND="
 	ogdi? ( sci-libs/ogdi )
 	opencl? ( virtual/opencl )
 	oracle? ( dev-db/oracle-instantclient:= )
-	pdf? ( app-text/poppler:= )
+	pdf? ( <app-text/poppler-0.83:= )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
 	postgres? ( >=dev-db/postgresql-8.4:= )

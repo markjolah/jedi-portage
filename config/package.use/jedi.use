@@ -72,3 +72,4 @@ dev-python/matplotlib tk
 dev-lang/python tk
 app-text/pelican markdown
 dev-workflow/cylc  python_single_target_python2_7
+dev-workflow/cylc -gui
