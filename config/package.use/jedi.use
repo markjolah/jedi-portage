@@ -93,3 +93,4 @@ dev-python/ply python_targets_python2_7
 dev-python/pygments python_targets_python2_7
 virtual/python-enum34 python_targets_python2_7
 virtual/python-ipaddress python_targets_python2_7
+sys-cluster/singularity python_single_target_python3_6
