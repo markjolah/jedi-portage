@@ -1,6 +1,6 @@
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7,8} )
 
 inherit distutils-r1
 
@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-        dev-python/requests
-        dev-python/coverage
+        dev-python/requests[${PYTHON_USEDEP}]
+        dev-python/coverage[${PYTHON_USEDEP}]
         "
 

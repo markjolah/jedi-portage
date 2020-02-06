@@ -13,19 +13,19 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
+IUSE="test dask"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/numpy-1.14[${PYTHON_USEDEP}]
-	>=dev-python/pandas-0.19.2[${PYTHON_USEDEP}]"
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pandas[${PYTHON_USEDEP}]"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dask? ( dev-python/dask[${PYTHON_USEDEP}] )
 	test? (
-		>=dev-python/dask-0.18.2[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+		sci-libs/scipy[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(

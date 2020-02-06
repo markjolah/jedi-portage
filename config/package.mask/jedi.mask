@@ -5,5 +5,5 @@
 <virtual/lapack-3.8.0-r200
 sci-libs/openblas::gentoo
 sys-cluster/openmpi
->=dev-python/sphinx-2
+#>=dev-python/sphinx-2
 =dev-python/python-dateutil-2.8.1

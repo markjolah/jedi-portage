@@ -38,9 +38,6 @@ x11-libs/cairo xcb
 x11-libs/gdk-pixbuf jpeg
 sci-libs/openblas -openmp
 sys-libs/timezone-data leaps_timezone
-sci-libs/scipy -python_targets_python2_7
-dev-python/pandas -python_targets_python2_7
-dev-python/bottleneck -python_targets_python2_7
 sci-libs/netcdf static-libs
 sci-libs/netcdf-cxx static-libs
 sci-libs/netcdf-fortran static-libs
@@ -94,3 +91,8 @@ dev-python/pygments python_targets_python2_7
 virtual/python-enum34 python_targets_python2_7
 virtual/python-ipaddress python_targets_python2_7
 sys-cluster/singularity python_single_target_python3_6
+dev-python/ipaddress python_targets_python2_7
+#Waiting for Python3.8 support
+dev-python/xarray -python_targets_python3_8
+dev-python/ford -python_targets_python3_8
+dev-python/matplotlib -python_targets_python3_8
