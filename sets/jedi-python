@@ -19,3 +19,5 @@ dev-python/pip
 dev-python/virtualenv
 app-text/pelican
 dev-python/awscli
+dev-python/h5netcdf
+

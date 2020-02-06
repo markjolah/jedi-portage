@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test mpi pnetcdf"
+IUSE="test mpi pnetcdf opendap szip"
 REQUIRED_USE="pnetcdf? ( mpi )"
 
 RDEPEND="dev-python/numpy
@@ -25,9 +25,19 @@ RDEPEND="dev-python/numpy
          sci-libs/hdf5
          sci-libs/netcdf:=[hdf,hdf5]"
 DEPEND="sci-libs/hdf5
-	sci-libs/netcdf
-        mpi? ( dev-python/mpi4py )
-	pnetcdf? ( sci-libs/pnetcdf )
+        sci-libs/netcdf
+        virtual/jpeg
+        szip? ( sci-libs/hdf5[szip] )
+        sys-libs/zlib
+        mpi? ( dev-python/mpi4py
+               sci-libs/netcdf[mpi]
+               pnetcdf? ( sci-libs/pnetcdf
+                          sci-libs/netcdf[pnetcdf] )
+               !pnetcdf? ( sci-libs/hdf5[mpi] )
+             )
+        pnetcdf? ( sci-libs/pnetcdf
+                   sci-libs/netcdf[pnetcdf] )
+        opendap? ( net-misc/curl )
         ${RDEPEND}"
 
 S="${WORKDIR}"/${MY_P}

@@ -13,12 +13,4 @@ index 13c5cf7f..d063cfef 100644
  include( ecbuild_system NO_POLICY_SCOPE )
  
  ecbuild_requires_macro_version( 2.9 )
-@@ -200,7 +204,7 @@ if( HAVE_ECKIT_CMD)
-   list( APPEND ECKIT_LIBRARIES eckit_cmd )
- endif()
- 
--if( HAVE_ECKIT_MPI )
-+if( HAVE_MPI )
-   list( APPEND ECKIT_LIBRARIES eckit_mpi )
- endif()
  
