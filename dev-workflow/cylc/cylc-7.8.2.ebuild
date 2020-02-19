@@ -3,7 +3,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-r1
 
 DESCRIPTION="Cylc is a workflow engine for cycling systems."
 HOMEPAGE="https://cylc.github.io/"
@@ -13,21 +13,16 @@ RESTRICT="primaryuri"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64"
-IUSE="+gui +doc test"
+IUSE=""
 
 RDEPEND="${PYTHON_DEPS}
         dev-python/pyopenssl[${PYTHON_USEDEP}]
         dev-python/requests[${PYTHON_USEDEP}]
-        dev-python/urllib3[${PYTHON_USEDEP}]
-        gui? ( dev-python/pygtk[${PYTHON_USEDEP}]
-               media-gfx/graphviz
-               dev-python/pygraphviz[${PYTHON_USEDEP}] )"
+        dev-python/urllib3[${PYTHON_USEDEP}]"
 
 DEPEND="${PYTHON_DEPS}
         net-libs/libtirpc
         dev-libs/openssl
-        test? ( dev-python/mock[${PYTHON_USEDEP}] )
-        doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
         "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -43,7 +38,6 @@ src_unpack() {
 
 src_compile() {
     PATH="${S}/bin:$PATH"
-    use doc && emake
 }
 
 src_install() {
