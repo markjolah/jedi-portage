@@ -3,3 +3,4 @@ dev-util/valgrind
 app-admin/lmod
 sci-libs/libbufr
 app-arch/pigz
+sys-process/time
