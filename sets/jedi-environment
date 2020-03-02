@@ -1,7 +1,7 @@
 sys-devel/gdb
 dev-util/valgrind
 app-admin/lmod
-sci-libs/libbufr
 app-arch/pigz
 sys-process/time
 sci-mathematics/cgal
+sci-libs/parallelio

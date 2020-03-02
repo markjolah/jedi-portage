@@ -6,7 +6,8 @@ inherit git-r3 cmake-utils multilib
 
 DESCRIPTION="NCEP bufr library for reading/writing bufr files."
 HOMEPAGE="https://github.com/JCSDA/bufrlib"
-EGIT_REPO_URI="https://github.com/JCSDA/bufrlib.git"
+#EGIT_REPO_URI="https://github.com/JCSDA/bufrlib.git"
+EGIT_REPO_URI="file:///nfs/olah/home/mjo/work/github/bufrlib"
 EGIT_BRANCH="master"
 
 LICENSE="public-domain"
