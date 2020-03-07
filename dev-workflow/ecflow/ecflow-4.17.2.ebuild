@@ -45,8 +45,8 @@ S="${WORKDIR}/${MY_P}-Source"
 
 PATCHES=(
     "${FILESDIR}/${P}-gnuinstalldirs.patch"
-    "${FILESDIR}/${P}-libxec.patch"
-    "${FILESDIR}/${P}-menuy.patch"
+    "${FILESDIR}/${PN}-4.16.0-libxec.patch"
+    "${FILESDIR}/${PN}-4.16.0-menuy.patch"
 )
 
 BUILD_DIR="${WORKDIR}/${P}-build"
