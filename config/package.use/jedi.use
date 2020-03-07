@@ -96,3 +96,5 @@ dev-python/ipaddress python_targets_python2_7
 dev-python/xarray -python_targets_python3_8
 dev-python/ford -python_targets_python3_8
 dev-python/matplotlib -python_targets_python3_8
+sci-libs/netcdf-fortran mpi
+dev-python/h5py mpi
