@@ -1,0 +1,6 @@
+sys-devel/gcc:6.5.0
+sys-devel/gcc:7.5.0
+sys-devel/gcc:8.4.0
+sys-devel/gcc:9.2.0
+sys-devel/clang:9
+sys-devel/clang:10
