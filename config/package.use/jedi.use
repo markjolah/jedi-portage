@@ -101,3 +101,4 @@ sci-libs/netcdf-fortran mpi
 dev-python/h5py mpi
 dev-python/enum34 python_targets_python2_7
 media-libs/libglvnd X
+virtual/mpi cxx
