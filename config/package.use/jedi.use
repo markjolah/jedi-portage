@@ -98,3 +98,4 @@ dev-python/ford -python_targets_python3_8
 dev-python/matplotlib -python_targets_python3_8
 sci-libs/netcdf-fortran mpi
 dev-python/h5py mpi
+dev-python/enum34 python_targets_python2_7
