@@ -59,6 +59,7 @@ x11-libs/libxcb xkb
 x11-libs/libxkbcommon X
 dev-libs/libpcre2 pcre16
 sys-cluster/slurm lua
+sys-cluster/slurm ucx
 sys-cluster/slurm -html
 sys-cluster/slurm -pam
 #sci-libs/mkl int64
@@ -99,3 +100,4 @@ dev-python/matplotlib -python_targets_python3_8
 sci-libs/netcdf-fortran mpi
 dev-python/h5py mpi
 dev-python/enum34 python_targets_python2_7
+media-libs/libglvnd X
