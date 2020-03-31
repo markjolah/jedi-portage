@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2aca451..d9e8048 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,6 +4,11 @@ project( odc C CXX )
+ 
+ set( CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/../ecbuild/cmake")
+ 
++find_package(ecbuild REQUIRED)
++set(CMAKE_MODULE_PATH ${ECBUILD_CMAKE_DIR} ${CMAKE_MODULE_PATH})
++include(GNUInstallDirs)
++set(INSTALL_LIB_DIR ${CMAKE_INSTALL_LIBDIR})
++
+ include( ecbuild_system NO_POLICY_SCOPE )
+ 
+ ecbuild_requires_macro_version( 2.9 )
