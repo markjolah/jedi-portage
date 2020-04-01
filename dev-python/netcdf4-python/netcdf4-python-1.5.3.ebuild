@@ -20,8 +20,8 @@ KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test mpi pnetcdf opendap szip"
 REQUIRED_USE="pnetcdf? ( mpi )"
 
-RDEPEND="dev-python/numpy
-         dev-python/cftime
+RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+         dev-python/cftime[${PYTHON_USEDEP}]
          sci-libs/hdf5
          sci-libs/netcdf:=[hdf,hdf5]"
 DEPEND="sci-libs/hdf5

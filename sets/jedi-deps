@@ -18,3 +18,4 @@ virtual/szip
 dev-vcs/git
 dev-vcs/git-lfs
 sci-libs/ncep-bufrlib
+sci-libs/libaec

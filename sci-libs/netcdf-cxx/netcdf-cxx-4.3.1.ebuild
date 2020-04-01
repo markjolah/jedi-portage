@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils
 
@@ -28,5 +28,6 @@ src_configure() {
 src_install() {
 	default
 	use examples && dodoc -r examples
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name 'libh5bzip2.so' -delete || die #Provided by sci-libs/netcdf
 }
