@@ -5,3 +5,4 @@ app-arch/pigz
 sys-process/time
 sci-mathematics/cgal
 sci-libs/parallelio
+net-misc/rclone

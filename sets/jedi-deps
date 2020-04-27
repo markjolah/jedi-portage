@@ -20,3 +20,4 @@ dev-vcs/git-lfs
 sci-libs/ncep-bufrlib
 sci-libs/libaec
 sci-libs/odc
+dev-python/pyodc

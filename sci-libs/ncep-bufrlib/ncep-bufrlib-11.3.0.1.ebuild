@@ -2,13 +2,12 @@
 
 EAPI=7
 
-inherit git-r3 cmake-utils multilib
+inherit cmake-utils multilib
 
 DESCRIPTION="NCEP bufr library for reading/writing bufr files."
 HOMEPAGE="https://github.com/JCSDA/bufrlib"
-#EGIT_REPO_URI="https://github.com/JCSDA/bufrlib.git"
-EGIT_REPO_URI="file:///nfs/olah/home/mjo/work/github/bufrlib"
-EGIT_BRANCH="master"
+SRC_URI="https://github.com/JCSDA/bufrlib/archive/v11.3.0.1.tar.gz"
+RESTRICT="primaryuri"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -17,7 +16,12 @@ IUSE=""
 
 DEPEND="sys-devel/gcc[fortran]"
 
+MY_PN="bufrlib"
+MY_P="${MY_PN}-${PV}"
+
 CMAKE_MAKEFILE_GENERATOR="emake"
+
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
         FFLAGS=${CFLAGS}
