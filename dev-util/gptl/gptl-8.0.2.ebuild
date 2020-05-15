@@ -1,0 +1,24 @@
+# Copyright 2020 UCAR
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
+
+inherit autotools
+
+DESCRIPTION="GPTL is a library to instrument C, C++, and Fortran codes for performance analysis and profiling."
+HOMEPAGE="https://jmrosinski.github.io/GPTL/"
+SRC_URI="https://github.com/jmrosinski/GPTL/releases/download/v${PV}/${P}.tar.gz"
+RESTRICT="primaryuri"
+LICENSE="MIT"
+KEYWORDS="amd64"
+IUSE="+pmpi papi"
+SLOT="0"
+
+DEPEND="virtual/mpi
+        papi? ( dev-libs/papi )"
+
+src_configure() {
+  CC=mpicc FC=mpif90 econf \
+    $(use_enable pmpi papi)
+}
+
