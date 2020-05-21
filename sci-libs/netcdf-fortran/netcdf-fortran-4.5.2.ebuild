@@ -22,19 +22,20 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	default
-	eautoreconf
+    default
+    eautoreconf
 }
 
 src_configure() {
     if use mpi ; then
+        export MPICH_FC=${FC}
         FC="mpifort"
     fi
     econf $(use_enable static-libs static)
 }
 
 src_install() {
-	default
-	use examples && dodoc -r examples
-	prune_libtool_files
+    default
+    use examples && dodoc -r examples
+    prune_libtool_files
 }

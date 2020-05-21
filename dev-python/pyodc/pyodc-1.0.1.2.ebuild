@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
-MY_PV="1.0.1.jcsda2"
+MY_PV="$(ver_cut 1-3).jcsda$(ver_cut 4)"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Python interface to odc for encoding/decoding ODB files"

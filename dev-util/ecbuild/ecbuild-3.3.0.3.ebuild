@@ -7,7 +7,7 @@ HOMEPAGE="https://github.com/JCSDA/ecbuild"
 # SRC_URI="https://github.com/ecmwf/ecbuild/archive/${PV}.tar.gz"
 # RESTRICT="primaryuri"
 EGIT_REPO_URI="https://github.com/JCSDA/ecbuild"
-EGIT_COMMIT="3.1.0.jcsda3"
+EGIT_COMMIT="$(ver_cut 1-3).jcsda$(ver_cut 4)"
 
 
 LICENSE="Apache-2.0"

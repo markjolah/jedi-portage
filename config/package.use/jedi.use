@@ -112,3 +112,5 @@ dev-python/markdown-include -python_targets_python2_7
 sci-libs/blas-reference python_targets_python2_7
 sci-libs/cblas-reference python_targets_python2_7
 sci-libs/lapack-reference python_targets_python2_7
+dev-util/gptl papi
+dev-libs/libpfm static-libs

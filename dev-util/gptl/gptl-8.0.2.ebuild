@@ -9,16 +9,17 @@ DESCRIPTION="GPTL is a library to instrument C, C++, and Fortran codes for perfo
 HOMEPAGE="https://jmrosinski.github.io/GPTL/"
 SRC_URI="https://github.com/jmrosinski/GPTL/releases/download/v${PV}/${P}.tar.gz"
 RESTRICT="primaryuri"
-LICENSE="MIT"
+LICENSE="GPL-2"
 KEYWORDS="amd64"
-IUSE="+pmpi papi"
 SLOT="0"
+
+IUSE="+pmpi papi"
 
 DEPEND="virtual/mpi
         papi? ( dev-libs/papi )"
 
 src_configure() {
   CC=mpicc FC=mpif90 econf \
-    $(use_enable pmpi papi)
+    $(use_enable papi)
+    $(use_enable pmpi)
 }
-

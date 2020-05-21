@@ -36,7 +36,6 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.9-static_libgfortran.patch
-	"${FILESDIR}"/${PN}-1.8.13-no-messing-ldpath.patch
 )
 
 pkg_setup() {
@@ -77,11 +76,12 @@ src_prepare() {
 }
 
 src_configure() {
-	append-cflags -fcommon
+    append-cflags -fcommon  #TO be removed once gcc-10 support is complete
 	econf \
 		--disable-static \
 		--enable-deprecated-symbols \
 		--enable-build-mode=$(usex debug debug production) \
+        --datarootdir=${ED}/share \
 		$(use_enable cxx) \
 		$(use_enable debug codestack) \
 		$(use_enable fortran) \

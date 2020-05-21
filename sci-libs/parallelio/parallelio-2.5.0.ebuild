@@ -31,13 +31,21 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( ${FILESDIR}/${P}-uthash.patch )
 
 src_prepare() {
-	rm src/clib/uthash.h
+    rm src/clib/uthash.h
     default
     eautoreconf
 }
 
 src_configure() {
+    export MPICH_FC=${FC}
+    export MPICH_CC=${CC}
     FC=mpifort CC=mpicc econf $(use_enable fortran) \
           --with-pic \
           --enable-netcdf-integration
+}
+
+src_compile() {
+    export MPICH_FC=${FC}
+    export MPICH_CC=${CC}
+    default
 }
