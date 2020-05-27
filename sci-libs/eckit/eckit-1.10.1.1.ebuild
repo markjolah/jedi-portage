@@ -1,3 +1,6 @@
+# Copyright 2020 UCAR
+# Distributed under the terms of the GNU General Public License v2
+
 EAPI=7
 
 inherit git-r3 cmake-utils flag-o-matic
@@ -5,7 +8,8 @@ inherit git-r3 cmake-utils flag-o-matic
 DESCRIPTION="A C++ toolkit that supports development of tools and applications at ECMWF"
 HOMEPAGE="https://github.com/JCSDA/eckit"
 EGIT_REPO_URI="https://github.com/JCSDA/eckit"
-EGIT_COMMIT="$(ver_cut 1-3).jcsda$(ver_cut 4)"
+EGIT_BRANCH="release-stable"
+EGIT_COMMIT="48be4ad8599891ca7bd78aec308222d8cc57bb44"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -32,7 +36,7 @@ DEPEND="dev-util/cmake
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-PATCHES=( "${FILESDIR}/${PN}-ecbuild-cmake-fix.patch" )
+PATCHES=( "${FILESDIR}/${PN}-find-ecbuild.patch" )
 
 src_configure() {
     filter-flags -Wl,--as-needed -march=native
