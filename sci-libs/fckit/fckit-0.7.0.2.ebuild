@@ -9,7 +9,7 @@ DESCRIPTION="A Fortran toolkit for interoperating Fortran with C/C++"
 HOMEPAGE="https://github.com/JCSDA/fckit"
 EGIT_REPO_URI="https://github.com/JCSDA/fckit"
 EGIT_BRANCH="release-stable"
-EGIT_COMMIT="bd12ab53df2a60bb1b9b685f7bf482a65a687638"
+EGIT_COMMIT="8383afcbb4ad3675249313c52e2c57a0e4f3ad2c"
 
 LICENSE="Apache-2.0"
 SLOT="0"

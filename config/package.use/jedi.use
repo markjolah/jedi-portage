@@ -96,9 +96,7 @@ virtual/python-ipaddress python_targets_python2_7
 sys-cluster/singularity python_single_target_python3_6
 dev-python/ipaddress python_targets_python2_7
 #Waiting for Python3.8 support
-dev-python/xarray -python_targets_python3_8
 dev-python/ford -python_targets_python3_8
-dev-python/matplotlib -python_targets_python3_8
 sci-libs/netcdf-fortran mpi
 dev-python/h5py mpi
 dev-python/enum34 python_targets_python2_7
@@ -114,3 +112,4 @@ sci-libs/cblas-reference python_targets_python2_7
 sci-libs/lapack-reference python_targets_python2_7
 dev-util/gptl papi
 dev-libs/libpfm static-libs
+sci-geosciences/atlas eigen
