@@ -21,3 +21,5 @@ sci-libs/ncep-bufrlib
 sci-libs/libaec
 sci-libs/odc
 dev-python/pyodc
+sci-libs/fckit
+sci-geosciences/atlas
