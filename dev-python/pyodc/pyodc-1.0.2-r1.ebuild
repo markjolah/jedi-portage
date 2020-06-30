@@ -22,7 +22,6 @@ KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-        dev-python/pytest-runner[${PYTHON_USEDEP}]
         dev-python/cffi[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
