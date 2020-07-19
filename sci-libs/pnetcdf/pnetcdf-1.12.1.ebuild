@@ -1,6 +1,6 @@
 EAPI=7
 
-inherit autotools
+inherit autotools flag-o-matic
 
 MY_P=PnetCDF
 MY_V=$(ver_rs 1- _)
@@ -26,5 +26,6 @@ src_prepare() {
     default
 }
 src_configure() {
+    append-fflags $(test-flags-FC -fallow-argument-mismatch)
     econf --disable-netcdf4 --enable-shared=yes
 }

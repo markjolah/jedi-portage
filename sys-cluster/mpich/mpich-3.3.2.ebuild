@@ -6,7 +6,7 @@ EAPI=6
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 
-inherit fortran-2 multilib-minimal multilib autotools
+inherit fortran-2 multilib-minimal multilib autotools flag-o-matic
 
 MY_PV=${PV/_/}
 DESCRIPTION="A high performance and portable MPI implementation"
@@ -98,6 +98,7 @@ multilib_src_configure() {
 	export MPICHLIB_LDFLAGS="${LDFLAGS}"
 	unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
 
+    append-fflags $(test-flags-FC -fallow-argument-mismatch)
 	ECONF_SOURCE=${S} econf \
 		--enable-shared \
 		--with-hwloc-prefix="${EPREFIX}/usr" \

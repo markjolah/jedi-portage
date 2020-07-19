@@ -26,3 +26,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 
 # S="${WORKDIR}/${P}"
+
+PATCHES=( "${FILESDIR}/pyodc-1.0.2-no-pytest-runner.patch" )

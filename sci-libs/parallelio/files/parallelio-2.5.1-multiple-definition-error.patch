@@ -1,0 +1,59 @@
+diff --git a/src/clib/CMakeLists.txt b/src/clib/CMakeLists.txt
+index 7c5f26ca..9e3d932d 100644
+--- a/src/clib/CMakeLists.txt
++++ b/src/clib/CMakeLists.txt
+@@ -9,7 +9,7 @@ project (PIOC C)
+ add_library (pioc topology.c pio_file.c pioc_support.c pio_lists.c
+   pioc.c pioc_sc.c pio_spmd.c pio_rearrange.c pio_nc4.c bget.c
+   pio_nc.c pio_put_nc.c pio_get_nc.c pio_getput_int.c pio_msg.c
+-  pio_darray.c pio_darray_int.c pio_get_vard.c pio_put_vard.c)
++  pio_darray.c pio_darray_int.c pio_get_vard.c pio_put_vard.c pio_error.c)
+ 
+ # set up include-directories
+ include_directories(
+diff --git a/src/clib/pio_error.c b/src/clib/pio_error.c
+new file mode 100644
+index 00000000..8c4c2f8b
+--- /dev/null
++++ b/src/clib/pio_error.c
+@@ -0,0 +1,21 @@
++/**
++ * @file
++ * Definition for Macros to handle errors in tests or libray code.
++ * @author Ed Hartnett
++ * @date 2020
++ *
++ * @see https://github.com/NCAR/ParallelIO
++ */
++
++/**
++ * Global err buffer for MPI. When there is an MPI error, this buffer
++ * is used to store the error message that is associated with the MPI
++ * error.
++ */
++char err_buffer[MPI_MAX_ERROR_STRING];
++
++/**
++ * This is the length of the most recent MPI error message, stored
++ * int the global error string.
++ */
++int resultlen;
+diff --git a/src/clib/pio_error.h b/src/clib/pio_error.h
+index dbf71aba..78e9c26f 100644
+--- a/src/clib/pio_error.h
++++ b/src/clib/pio_error.h
+@@ -74,12 +74,12 @@
+  * is used to store the error message that is associated with the MPI
+  * error.
+  */
+-char err_buffer[MPI_MAX_ERROR_STRING];
++extern char err_buffer[MPI_MAX_ERROR_STRING];
+ 
+ /**
+  * This is the length of the most recent MPI error message, stored
+  * int the global error string.
+  */
+-int resultlen;
++extern int resultlen;
+ 
+ #endif /* __PIO_ERROR__ */

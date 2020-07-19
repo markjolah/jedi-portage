@@ -113,3 +113,6 @@ sci-libs/lapack-reference python_targets_python2_7
 dev-util/gptl papi
 dev-libs/libpfm static-libs
 sci-geosciences/atlas eigen
+sys-apps/hwloc -cuda
+sys-apps/hwloc -netloc
+sys-apps/hwloc plugins
