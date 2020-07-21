@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-        dev-python/graphviz[${PYTHON_USEDEP}]
+        dev-python/graphviz
         dev-python/tqdm[${PYTHON_USEDEP}]
         dev-python/pygments[${PYTHON_USEDEP}]
         dev-python/beautifulsoup[${PYTHON_USEDEP}]

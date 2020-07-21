@@ -25,6 +25,7 @@ RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 
 DEPEND="sci-libs/proj
         sci-libs/gdal
+	sci-libs/geos
         ${RDEPEND}"
 
 python_prepare_all() {
