@@ -20,3 +20,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
         dev-python/coverage[${PYTHON_USEDEP}]
         "
 
+MY_PN="${PN}-python"
+MY_P="${MY_PN}-${PV}"
+
+S="${WORKDIR}/${MY_P}"
