@@ -7,4 +7,4 @@ sci-mathematics/cgal
 sci-libs/parallelio
 net-misc/rclone
 dev-util/gptl
-dev-python/copecov
+dev-python/codecov
