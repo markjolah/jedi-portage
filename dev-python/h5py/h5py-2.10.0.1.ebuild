@@ -28,42 +28,7 @@ RDEPEND="sci-libs/hdf5:=[hl(+)]
          "
 
 BDEPEND="dev-python/pkgconfig"
-#	mpi? ( virtual/mpi )
 
 DEPEND="dev-python/cython[${PYTHON_USEDEP}]
-		dev-python/cached-property[${PYTHON_USEDEP}]"
-#	mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
+        dev-python/cached-property[${PYTHON_USEDEP}]"
 
-# PATCHES="${FILESDIR}/h5py-2.10.0-tests.patch"
-
-# DOCS=( README.rst AUTHORS ANN.rst )
-
-# distutils_enable_tests setup.py
-# distutils_enable_sphinx docs --no-autodoc
-
-#pkg_setup() {
-#	use mpi && export CC=mpicc
-#}
-
-# python_prepare_all() {
-# 	append-cflags -fno-strict-aliasing
-# 	distutils-r1_python_prepare_all
-# }
-#
-# python_configure() {
-# #	esetup.py configure $(usex mpi --mpi '')
-# 	append-cflags -fcommon
-# 	esetup.py configure
-# }
-
-# python_test() {
-# 	esetup.py test || die "Tests fail with ${EPYTHON}"
-# 	# tests generate .pytest_cache which should not be installed
-# 	rm -r "${BUILD_DIR}/lib/.pytest_cache" || die
-# }
-
-# python_install_all() {
-# 	use examples && dodoc -r examples
-#
-# 	distutils-r1_python_install_all
-# }
