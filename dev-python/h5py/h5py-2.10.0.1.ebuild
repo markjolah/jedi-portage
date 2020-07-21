@@ -27,8 +27,38 @@ RDEPEND="sci-libs/hdf5:=[hl(+)]
          dev-python/six[${PYTHON_USEDEP}]
          "
 
-BDEPEND="dev-python/pkgconfig"
+BDEPEND="dev-python/pkgconfig[${PYTHON_USEDEP}]
+	 dev-python/setuptools[${PYTHON_USEDEP}]
+         dev-python/cython[${PYTHON_USEDEP}]
+         dev-python/cached-property[${PYTHON_USEDEP}]"
 
-DEPEND="dev-python/cython[${PYTHON_USEDEP}]
-        dev-python/cached-property[${PYTHON_USEDEP}]"
+DEPEND="${BDEPEND}"
+
+#PATCHES="${FILESDIR}/${P}-tests.patch"
+
+#DOCS=( README.rst AUTHORS ANN.rst )
+
+#distutils_enable_tests setup.py
+#distutils_enable_sphinx docs --no-autodoc
+
+#pkg_setup() {
+#       use mpi && export CC=mpicc
+#}
+
+python_prepare_all() {
+        append-cflags -fno-strict-aliasing
+        distutils-r1_python_prepare_all
+}
+
+python_configure() {
+#       esetup.py configure $(usex mpi --mpi '')
+        esetup.py configure
+}
+
+#python_test() {
+#        esetup.py test || die "Tests fail with ${EPYTHON}"
+#        # tests generate .pytest_cache which should not be installed
+#        rm -r "${BUILD_DIR}/lib/.pytest_cache" || die
+#}
+
 
