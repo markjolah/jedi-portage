@@ -77,17 +77,17 @@ src_install() {
 	# Remove default texmf.cnf to ship our own, greatly based on texlive dvd's
 	# texmf.cnf
 	# It will also be generated from /etc/texmf/texmf.d files by texmf-update
-	rm -f "${ED}/${TEXMF_PATH}/web2c/texmf.cnf"
+	rm -f "${ED}${TEXMF_PATH}/web2c/texmf.cnf"
 
 	insinto /etc/texmf/texmf.d
 	doins "${WORKDIR}/texmf.d/"*.cnf
 
 	# Remove fmtutil.cnf, it will be regenerated from /etc/texmf/fmtutil.d files
 	# by texmf-update
-	rm -f "${ED}/${TEXMF_PATH}/web2c/fmtutil.cnf"
+	rm -f "${ED}${TEXMF_PATH}/web2c/fmtutil.cnf"
 
-	dosym ../../../../etc/texmf/web2c/fmtutil.cnf ${TEXMF_PATH}/web2c/fmtutil.cnf || die
-	dosym ../../../../etc/texmf/web2c/texmf.cnf ${TEXMF_PATH}/web2c/texmf.cnf  || die
+	dosym ../../../../etc/texmf/web2c/fmtutil.cnf ${TEXMF_PATH}/web2c/fmtutil.cnf
+	dosym ../../../../etc/texmf/web2c/texmf.cnf ${TEXMF_PATH}/web2c/texmf.cnf
 
 	newsbin "${S}/texmf-update" texmf-update
 
@@ -98,9 +98,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo "EROOT=${EROOT}"
-	echo "EPREFIX=${EPREFIX}"
-
 	etexmf-update
 }
 
