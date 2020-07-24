@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
@@ -16,7 +16,7 @@ SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
 SLOT="0"
 LICENSE="mpich2"
 KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="+cxx doc fortran mpi-threads romio threads"
+IUSE="+cxx doc fortran mpi-threads romio threads test"
 
 COMMON_DEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
@@ -52,7 +52,8 @@ src_prepare() {
 		src/packaging/pkgconfig/mpich.pc.in \
 		src/env/*.in \
 		|| die
-
+        sed -i -e "s|FFLAGS=\"\$WRAPPER_FFLAGS\"|FFLAGS=\"\$WRAPPER_FFLAGS $(test-flags-F77 -fallow-argument-mismatch)\"|" \
+               -e "s|FCLAGS=\"\$WRAPPER_FCLAGS\"|FCLAGS=\"\$WRAPPER_FCLAGS $(test-flags-FC  -fallow-argument-mismatch)\"|" test/mpi/configure.ac || die
 	# Fix m4 files to satisfy lib dir with multilib.
 	touch -r src/pm/hydra/confdb/aclocal_libs.m4 \
 		confdb/aclocal_libs.m4 \
@@ -93,12 +94,12 @@ multilib_src_configure() {
 	export MPICHLIB_CFLAGS="${CFLAGS}"
 	export MPICHLIB_CPPFLAGS="${CPPFLAGS}"
 	export MPICHLIB_CXXFLAGS="${CXXFLAGS}"
-	export MPICHLIB_FFLAGS="${FFLAGS}"
-	export MPICHLIB_FCFLAGS="${FCFLAGS}"
+	export MPICHLIB_FFLAGS="${FFLAGS} $(test-flags-F77 -fallow-argument-mismatch)"
+	export MPICHLIB_FCFLAGS="${FCFLAGS} $(test-flags-FC -fallow-argument-mismatch)"
 	export MPICHLIB_LDFLAGS="${LDFLAGS}"
 	unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
+	append-fflags 
 
-    append-fflags $(test-flags-FC -fallow-argument-mismatch)
 	ECONF_SOURCE=${S} econf \
 		--enable-shared \
 		--with-hwloc-prefix="${EPREFIX}/usr" \
@@ -117,7 +118,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
-	emake -j1 check
+	use test && emake -j1 check
 }
 
 multilib_src_install() {
@@ -126,11 +127,11 @@ multilib_src_install() {
 	# fortran header cannot be wrapped (bug #540508), workaround part 1
 	if  use fortran; then
 		if multilib_is_native_abi; then
-			mkdir "${T}"/fortran || die
-			mv "${ED}"usr/include/mpif* "${T}"/fortran || die
-			mv "${ED}"usr/include/*.mod "${T}"/fortran || die
+			mkdir -p "${T}"/fortran || die
+			mv "${ED}"/usr/include/mpif* "${T}"/fortran || die
+			mv "${ED}"/usr/include/*.mod "${T}"/fortran || die
 		else
-			rm "${ED}"usr/include/mpif* "${ED}"usr/include/*.mod || die
+			rm "${ED}"/usr/include/mpif* "${ED}"/usr/include/*.mod || die
 		fi
 	fi
 }
@@ -138,7 +139,7 @@ multilib_src_install() {
 multilib_src_install_all() {
 	# fortran header cannot be wrapped (bug #540508), workaround part 2
 	if use fortran; then
-		mv "${T}"/fortran/* "${ED}"usr/include || die
+		mv "${T}"/fortran/* "${ED}"/usr/include || die
 	fi
 
 	einstalldocs
@@ -148,6 +149,6 @@ multilib_src_install_all() {
 	fi
 
 	if ! use doc; then
-		rm -rf "${ED}"usr/share/doc/${PF}/www* || die
+		rm -rf "${ED}"/usr/share/doc/${PF}/www* || die
 	fi
 }
