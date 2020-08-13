@@ -9,7 +9,7 @@ DESCRIPTION="A C++ toolkit that supports development of tools and applications a
 HOMEPAGE="https://github.com/JCSDA/eckit"
 EGIT_REPO_URI="https://github.com/JCSDA/eckit"
 EGIT_BRANCH="release-stable"
-EGIT_COMMIT="cb9a4d1cebbc95ece977f718fc9320dbc700d72b"
+EGIT_COMMIT="282ce146c7b3b298ead3310109c31fc9ed568ced"
 
 LICENSE="Apache-2.0"
 SLOT="0"
