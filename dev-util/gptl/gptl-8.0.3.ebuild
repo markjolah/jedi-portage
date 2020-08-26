@@ -18,8 +18,6 @@ IUSE="+pmpi papi"
 DEPEND="virtual/mpi
         papi? ( dev-libs/papi )"
 
-PATCHES=( ${FILESDIR}/${P}-DCMRT_disable.patch )
-
 src_configure() {
   CC=mpicc FC=mpif90 econf \
     $(use_enable papi)

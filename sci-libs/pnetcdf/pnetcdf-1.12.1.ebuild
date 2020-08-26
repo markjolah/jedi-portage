@@ -27,5 +27,5 @@ src_prepare() {
 }
 src_configure() {
     append-fflags $(test-flags-FC -fallow-argument-mismatch)
-    econf --disable-netcdf4 --enable-shared=yes
+    econf --disable-netcdf4 --enable-shared=yes --includedir=$EPREFIX/usr/include/pnetcdf
 }
