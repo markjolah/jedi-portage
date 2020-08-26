@@ -116,3 +116,4 @@ sci-geosciences/atlas eigen
 sys-apps/hwloc -cuda
 sys-apps/hwloc -netloc
 sys-apps/hwloc plugins
+net-misc/openssh scp
