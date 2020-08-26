@@ -1,4 +1,4 @@
-# Copyright 2019 UCAR
+# Copyright 2019-2020 UCAR
 
 EAPI=7
 
@@ -9,7 +9,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="NCEP bufr library for reading/writing bufr files."
 HOMEPAGE="https://github.com/JCSDA/bufrlib"
-SRC_URI="https://github.com/JCSDA/bufrlib/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/JCSDA/bufrlib/archive/bufr_v${PV}.tar.gz -> ${MY_P}.tar.gz"
 RESTRICT="primaryuri"
 
 LICENSE="public-domain"
@@ -21,7 +21,7 @@ DEPEND="sys-devel/gcc[fortran]"
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-S="${WORKDIR}/${MY_P}"
+S=$WORKDIR/${MY_PN}-bufr_v${PV}
 
 src_configure() {
         FFLAGS=${CFLAGS}
