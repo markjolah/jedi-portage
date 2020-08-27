@@ -1,6 +1,8 @@
 EAPI=7
 
-inherit autotools flag-o-matic
+FORTRAN_STANDARD=90
+
+inherit autotools flag-o-matic fortran-2
 
 MY_PN=ParallelIO
 SHORT_P=pio
@@ -30,6 +32,10 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( ${FILESDIR}/${P}-uthash.patch
           ${FILESDIR}/${P}-multiple-definition-error.patch )
 
+pkg_setup() {
+    fortran-2_pkg_setup
+}
+
 src_prepare() {
     rm src/clib/uthash.h
     default
@@ -40,9 +46,20 @@ src_configure() {
     export MPICH_FC=${FC}
     export MPICH_CC=${CC}
     append-fflags $(test-flags-FC -fallow-argument-mismatch)
-    FC=mpifort CC=mpicc econf $(use_enable fortran) \
-          --with-pic \
-          --enable-netcdf-integration
+    if use netcdf; then
+        NETCDF_INCLUDE_DIR=$(nc-config --includedir)
+        export CPPFLAGS="-I$NETCDF_INCLUDE_DIR $CPPFLAGS"
+    fi
+    if use pnetcdf; then
+        PNETCDF_INCLUDE_DIR=$(pnetcdf-config --includedir)
+        export CPPFLAGS="-I$PNETCDF_INCLUDE_DIR $CPPFLAGS"
+    fi
+    FC=mpifort CC=mpicc econf \
+        $(use_enable fortran) \
+        --with-pic \
+        --enable-netcdf-integration \
+        --includedir=$EPREFIX/usr/include/pio
+
 }
 
 src_compile() {

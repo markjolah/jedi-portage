@@ -15,40 +15,41 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="dap gsl hdf5 ncap2 openmp static-libs test udunits"
 
 RDEPEND="
-	>=sci-libs/netcdf-4:=[dap=,hdf5?,tools]
-	gsl? ( sci-libs/gsl:= )
-	ncap2? ( dev-cpp/antlr-cpp:2= )
-	udunits? ( >=sci-libs/udunits-2 )"
+    >=sci-libs/netcdf-4:=[dap=,hdf5?,tools]
+    gsl? ( sci-libs/gsl:= )
+    ncap2? ( dev-cpp/antlr-cpp:2= )
+    udunits? ( >=sci-libs/udunits-2 )"
 DEPEND="${RDEPEND}
-	test? ( >=sci-libs/netcdf-4[tools] )"
+    test? ( >=sci-libs/netcdf-4[tools] )"
 
 pkg_pretend() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+    [[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
+    [[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
 
 src_configure() {
-	use hdf5 && append-cppflags -DHAVE_NETCDF4_H
-
-	econf \
-		--disable-udunits \
-		$(use_enable dap) \
-		$(use_enable gsl) \
-		$(use_enable hdf5 netcdf4) \
-		$(use_enable ncap2) \
-		$(use_enable openmp) \
-		$(use_enable static-libs static) \
-		$(use_enable udunits udunits2)
+    use hdf5 && append-cppflags -DHAVE_NETCDF4_H
+    NETCDF_INCLUDE_DIR=$(nc-config --includedir)
+    export CPPFLAGS="-I$NETCDF_INCLUDE_DIR"
+    econf \
+        --disable-udunits \
+        $(use_enable dap) \
+        $(use_enable gsl) \
+        $(use_enable hdf5 netcdf4) \
+        $(use_enable ncap2) \
+        $(use_enable openmp) \
+        $(use_enable static-libs static) \
+        $(use_enable udunits udunits2)
 }
 
 src_install() {
-	default
-	doinfo doc/*.info*
+    default
+    doinfo doc/*.info*
 
-	if ! use static-libs; then
-		find "${D}" -name '*.la' -delete || die
-	fi
+    if ! use static-libs; then
+        find "${D}" -name '*.la' -delete || die
+    fi
 }

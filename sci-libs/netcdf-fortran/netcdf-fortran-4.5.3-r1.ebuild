@@ -18,8 +18,12 @@ IUSE="examples static-libs mpi"
 
 RDEPEND="sci-libs/netcdf[mpi=]"
 DEPEND="${RDEPEND}
-	dev-lang/cfortran
+    dev-lang/cfortran
 "
+
+pkg_setup() {
+    fortran-2_pkg_setup
+}
 
 src_prepare() {
     default
@@ -29,9 +33,12 @@ src_prepare() {
 src_configure() {
     if use mpi ; then
         export MPICH_FC=${FC}
-        FC="mpifort"
+        export FC="mpifort"
     fi
-    econf $(use_enable static-libs static)
+    NETCDF_INCLUDE_DIR=$(nc-config --includedir)
+    export CPPFLAGS="-I$NETCDF_INCLUDE_DIR"
+    econf $(use_enable static-libs static) \
+        --includedir=$EPREFIX/usr/include/netcdf
 }
 
 src_install() {

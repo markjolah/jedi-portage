@@ -2,7 +2,9 @@
 
 EAPI=7
 
-inherit cmake-utils multilib
+FORTRAN_STANDARD=77
+
+inherit cmake-utils multilib fortran-2
 
 MY_PN="bufrlib"
 MY_P="${MY_PN}-${PV}"
@@ -17,13 +19,17 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE=""
 
-DEPEND="sys-devel/gcc[fortran]"
+DEPEND=""
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
 S=$WORKDIR/${MY_PN}-bufr_v${PV}
 
+pkg_setup() {
+    fortran-2_pkg_setup
+}
+
 src_configure() {
-        FFLAGS=${CFLAGS}
-        cmake-utils_src_configure
+    export FFLAGS=${CFLAGS}
+    cmake-utils_src_configure
 }

@@ -20,5 +20,7 @@ DEPEND="${RDEPEND}
 
 src_configure() {
   append-cflags -fcommon #TO be removed with gcc-10 support
+  NETCDF_INCLUDE_DIR=$(nc-config --includedir)
+  export CPPFLAGS="-I$NETCDF_INCLUDE_DIR"
   default
 }

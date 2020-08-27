@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit autotools
+FORTRAN_STANDARD="90"
+
+inherit autotools fortran-2
 
 DESCRIPTION="GPTL is a library to instrument C, C++, and Fortran codes for performance analysis and profiling."
 HOMEPAGE="https://jmrosinski.github.io/GPTL/"
@@ -18,8 +20,15 @@ IUSE="+pmpi papi"
 DEPEND="virtual/mpi
         papi? ( dev-libs/papi )"
 
+pkg_setup() {
+    fortran-2_pkg_setup
+}
+
 src_configure() {
-  CC=mpicc FC=mpif90 econf \
-    $(use_enable papi)
-    $(use_enable pmpi)
+  export CC=mpicc
+  export FC=mpif90
+  econf \
+    $(use_enable papi) \
+    $(use_enable pmpi) \
+    --includedir=$EPREFIX/usr/include/gptl
 }
