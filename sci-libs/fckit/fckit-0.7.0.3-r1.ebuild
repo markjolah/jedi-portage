@@ -3,8 +3,6 @@
 
 EAPI=7
 
-FORTRAN_STANDARD="90"
-
 inherit git-r3 cmake-utils flag-o-matic fortran-2
 
 DESCRIPTION="A Fortran toolkit for interoperating Fortran with C/C++"

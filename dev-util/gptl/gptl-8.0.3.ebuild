@@ -3,8 +3,6 @@
 
 EAPI=7
 
-FORTRAN_STANDARD="90"
-
 inherit autotools fortran-2
 
 DESCRIPTION="GPTL is a library to instrument C, C++, and Fortran codes for performance analysis and profiling."

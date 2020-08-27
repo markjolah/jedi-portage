@@ -3,8 +3,6 @@
 
 EAPI=7
 
-FORTRAN_STANDARD="77 90"
-
 inherit autotools eutils fortran-2
 
 DESCRIPTION="Scientific library and interface for array oriented data access"

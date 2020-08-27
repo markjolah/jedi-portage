@@ -1,6 +1,8 @@
+# Copyright 2020 UCAR
+
 EAPI=7
 
-FORTRAN_STANDARD=90
+FORTAN_NEEDED=fortran
 
 inherit autotools flag-o-matic fortran-2
 
@@ -16,14 +18,14 @@ RESTRICT="primaryuri"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="fortran pnetcdf mpiio netcdf"
+IUSE="fortran pnetcdf mpiio netcdf gptl"
 
-DEPEND="dev-util/cmake
-        dev-libs/uthash
-        fortran? ( sys-devel/gcc[fortran] )
-        pnetcdf? ( sci-libs/pnetcdf )
+DEPEND="dev-libs/uthash
+        pnetcdf? ( sci-libs/pnetcdf[fortran=] )
         netcdf?  ( sci-libs/netcdf[mpi] )
-        mpiio? ( virtual/mpi[romio] )"
+        mpiio? ( virtual/mpi[romio] )
+        gptl? ( dev-util/gptl[papi] )"
+
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
@@ -45,6 +47,8 @@ src_prepare() {
 src_configure() {
     export MPICH_FC=${FC}
     export MPICH_CC=${CC}
+    export FC=mpifort
+    export CC=mpicc
     append-fflags $(test-flags-FC -fallow-argument-mismatch)
     if use netcdf; then
         NETCDF_INCLUDE_DIR=$(nc-config --includedir)
@@ -54,16 +58,11 @@ src_configure() {
         PNETCDF_INCLUDE_DIR=$(pnetcdf-config --includedir)
         export CPPFLAGS="-I$PNETCDF_INCLUDE_DIR $CPPFLAGS"
     fi
-    FC=mpifort CC=mpicc econf \
+    econf \
         $(use_enable fortran) \
         --with-pic \
-        --enable-netcdf-integration \
+        $(use_enable gptl timing) \
+        $(use_enable netcdf netcdf-integration) \
         --includedir=$EPREFIX/usr/include/pio
 
-}
-
-src_compile() {
-    export MPICH_FC=${FC}
-    export MPICH_CC=${CC}
-    default
 }
