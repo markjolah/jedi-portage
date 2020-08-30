@@ -44,6 +44,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3-add-external-libdir-parameter.patch
 )
 
+FORTRAN_MODULE_PATH="mpi/fortran"  #Install Fortran modules under subdirectory to prevent defatult inclusion from non compatable compilers
+
 src_prepare() {
 	default
 
@@ -52,6 +54,9 @@ src_prepare() {
 		src/packaging/pkgconfig/mpich.pc.in \
 		src/env/*.in \
 		|| die
+	sed -i -e "s|fflags= *@WRAPPER_FFLAGS@ *|fflags= -I\${includedir}/${FORTRAN_MODULE_PATH} @WRAPPER_FFLAGS@ |" \
+               -e "s|fcflags= *@WRAPPER_FCFLAGS@ *|fcflags= -I\${includedir}/${FORTRAN_MODULE_PATH} @WRAPPER_FCFLAGS@ |" \
+		src/packaging/pkgconfig/mpich.pc.in || die
         sed -i -e "s|FFLAGS=\"\$WRAPPER_FFLAGS\"|FFLAGS=\"\$WRAPPER_FFLAGS $(test-flags-F77 -fallow-argument-mismatch)\"|" \
                -e "s|FCLAGS=\"\$WRAPPER_FCLAGS\"|FCLAGS=\"\$WRAPPER_FCLAGS $(test-flags-FC  -fallow-argument-mismatch)\"|" test/mpi/configure.ac || die
 	# Fix m4 files to satisfy lib dir with multilib.
@@ -97,8 +102,9 @@ multilib_src_configure() {
 	export MPICHLIB_FFLAGS="${FFLAGS} $(test-flags-F77 -fallow-argument-mismatch)"
 	export MPICHLIB_FCFLAGS="${FCFLAGS} $(test-flags-FC -fallow-argument-mismatch)"
 	export MPICHLIB_LDFLAGS="${LDFLAGS}"
+	export MPICH_MPIFORT_FCFLAGS="-I/usr/include/${FORTRAN_MODULE_PATH}"
 	unset CFLAGS CPPFLAGS CXXFLAGS FFLAGS FCFLAGS LDFLAGS
-	append-fflags 
+	append-fflags
 
 	ECONF_SOURCE=${S} econf \
 		--enable-shared \
@@ -139,7 +145,8 @@ multilib_src_install() {
 multilib_src_install_all() {
 	# fortran header cannot be wrapped (bug #540508), workaround part 2
 	if use fortran; then
-		mv "${T}"/fortran/* "${ED}"/usr/include || die
+		mkdir -p "$ED/usr/include/${FORTRAN_MODULE_PATH}"
+		mv "${T}"/fortran/* "$ED/usr/include/$FORTRAN_MODULE_PATH" || die
 	fi
 
 	einstalldocs
