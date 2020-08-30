@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/JCSDA/ecbuild"
 # RESTRICT="primaryuri"
 EGIT_REPO_URI="https://github.com/JCSDA/ecbuild"
 #EGIT_COMMIT="$(ver_cut 1-3).jcsda$(ver_cut 4)"
-EGIT_BRANCH="bugfix/remove_fortran_flags_regex"
+EGIT_BRANCH="hotfix/use_cmake_install_libdir"
 #EGIT_COMMIT="7171f91f3242ecfb08380bc1e76d298c6febed41"
 
 LICENSE="Apache-2.0"
