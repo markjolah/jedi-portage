@@ -1,77 +1,77 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/SchedMD/slurm.git"
 	INHERIT_GIT="git-r3"
-	SRC_URI=""
-	KEYWORDS=""
 	MY_P="${P}"
 else
-	inherit eapi7-ver
 	if [[ ${PV} == *pre* || ${PV} == *rc* ]]; then
 		MY_PV=$(ver_rs '-0.') # pre-releases or release-candidate
 	else
-		MY_PV=$(ver_rs 3 '-') # stable releases
+		MY_PV=$(ver_rs 1-4 '-') # stable releases
 	fi
 	MY_P="${PN}-${MY_PV}"
 	INHERIT_GIT=""
-	SRC_URI="https://download.schedmd.com/slurm/${MY_P}.tar.bz2"
+	SRC_URI="https://github.com/SchedMD/slurm/archive/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${MY_P}"
 fi
 
-inherit autotools bash-completion-r1 eutils pam perl-module prefix toolchain-funcs user systemd ${INHERIT_GIT}
+inherit autotools bash-completion-r1 pam perl-module prefix toolchain-funcs systemd ${INHERIT_GIT}
 
 DESCRIPTION="A Highly Scalable Resource Manager"
-HOMEPAGE="https://www.schedmd.com"
+HOMEPAGE="https://www.schedmd.com https://github.com/SchedMD/slurm"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd ssl static-libs torque X"
+IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd static-libs ucx torque X"
 
-CDEPEND="
+COMMON_DEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
 	!net-analyzer/sinfo
 	|| ( sys-cluster/pmix[-pmi] virtual/mpi )
 	mysql? (
 		|| ( dev-db/mariadb-connector-c dev-db/mysql-connector-c )
-		slurmdbd? ( || ( dev-db/mariadb dev-db/mysql ) )
+		slurmdbd? ( || ( dev-db/mariadb:* dev-db/mysql:* ) )
 		)
 	munge? ( sys-auth/munge )
-	pam? ( virtual/pam )
-	ssl? ( dev-libs/openssl:0= )
+	pam? ( sys-libs/pam )
 	lua? ( dev-lang/lua:0= )
 	!lua? ( !dev-lang/lua )
 	ipmi? ( sys-libs/freeipmi )
 	json? ( dev-libs/json-c:= )
-	amd64? ( netloc? ( sys-apps/netloc ) )
+	amd64? ( netloc? ( || ( sys-apps/netloc >=sys-apps/hwloc-2.1.0[netloc] ) ) )
 	hdf5? ( sci-libs/hdf5:= )
 	numa? ( sys-process/numactl )
 	ofed? ( sys-fabric/ofed )
+	ucx? ( sys-cluster/ucx )
 	X? ( net-libs/libssh2 )
 	>=sys-apps/hwloc-1.1.1-r1
 	sys-libs/ncurses:0=
 	app-arch/lz4:0=
 	sys-libs/readline:0="
-DEPEND="${CDEPEND}
+
+DEPEND="${COMMON_DEPEND}
 	html? ( sys-apps/man2html )"
-RDEPEND="${CDEPEND}
+
+RDEPEND="${COMMON_DEPEND}
+	acct-user/slurm
+	acct-group/slurm
 	dev-libs/libcgroup"
 
 REQUIRED_USE="torque? ( perl )"
 
-LIBSLURM_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurm/perl"
-LIBSLURMDB_PERL_S="${WORKDIR}/${MY_P}/contribs/perlapi/libslurmdb/perl"
+S="${WORKDIR}/${PN}-${MY_P}"
 
-RESTRICT="primaryuri test"
+LIBSLURM_PERL_S="${S}/contribs/perlapi/libslurm/perl"
+LIBSLURMDB_PERL_S="${S}/contribs/perlapi/libslurmdb/perl"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-disable-sview.patch
-)
+RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${PN}-20.02.5.1-hdf5-pkgconfig.patch" )
 
 src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
@@ -79,11 +79,6 @@ src_unpack() {
 	else
 		default
 	fi
-}
-
-pkg_setup() {
-	enewgroup slurm 500
-	enewuser slurm 500 -1 /var/spool/slurm slurm
 }
 
 src_prepare() {
@@ -107,32 +102,34 @@ src_prepare() {
 	sed \
 		-e 's:sysconfig/.*:conf.d/slurm:g' \
 		-e 's:var/run/:run/slurm/:g' \
+		-e '/^EnvironmentFile=.*/d' \
 		-i "${S}/etc"/*.service.in \
 		|| die "Can't sed systemd services for sysconfig or var/run/"
+
+	sed -e '/AM_PATH_GTK_2_0/d' -i configure.ac || die
 
 	hprefixify auxdir/{ax_check_zlib,x_ac_{lz4,ofed,munge}}.m4
 	eautoreconf
 }
 
 src_configure() {
-	use debug || myconf+=( --disable-debug )
 	local myconf=(
 		--sysconfdir="${EPREFIX}/etc/${PN}"
 		--with-hwloc="${EPREFIX}/usr"
-		--docdir="${EPREFIX}/usr/share/doc/${P}"
-		--htmldir="${EPREFIX}/usr/share/doc/${P}"
+		--htmldir="${EPREFIX}/usr/share/doc/${PF}"
 	)
 	use pam && myconf+=( --with-pam_dir=$(getpam_mod_dir) )
 	use mysql || myconf+=( --without-mysql_config )
 	use amd64 && myconf+=( $(use_with netloc) )
 	econf "${myconf[@]}" \
+		$(use_enable debug) \
 		$(use_enable pam) \
 		$(use_enable X x11) \
-		$(use_with ssl) \
 		$(use_with munge) \
 		$(use_with json) \
 		$(use_with hdf5) \
 		$(use_with ofed) \
+		$(use_with ucx) \
 		$(use_enable static-libs static) \
 		$(use_enable multiple-slurmd)
 
@@ -182,14 +179,14 @@ src_install() {
 	fi
 	if use torque; then
 		emake DESTDIR="${D}" -C contribs/torque
-		rm -f "${ED}/usr/bin/mpiexec" || die
+		rm -f "${D}"/usr/bin/mpiexec || die
 	fi
 	use static-libs || find "${ED}" -name '*.la' -exec rm {} +
 	# install sample configs
 	keepdir /etc/slurm
 	insinto /etc/slurm
 	doins \
-		etc/bluegene.conf.example \
+		etc/prolog.example \
 		etc/cgroup.conf.example \
 		etc/slurm.conf.example \
 		etc/slurmdbd.conf.example
@@ -220,7 +217,7 @@ src_install() {
 
 pkg_preinst() {
 	if use munge; then
-		sed -i 's,\(SLURM_USE_MUNGE=\).*,\11,' "${ED}"etc/conf.d/slurm || die
+		sed -i 's,\(SLURM_USE_MUNGE=\).*,\11,' "${ED}"/etc/conf.d/slurm || die
 	fi
 }
 
@@ -232,14 +229,14 @@ create_folders_and_fix_permissions() {
 
 pkg_postinst() {
 	paths=(
-		"${EROOT}"var/${PN}/checkpoint
-		"${EROOT}"var/${PN}
-		"${EROOT}"var/spool/${PN}/slurmd
-		"${EROOT}"var/spool/${PN}
-		"${EROOT}"var/log/${PN}
-		/var/tmp/${PN}/${PN}d
-		/var/tmp/${PN}
-		/run/${PN}
+		"${EROOT}"/var/${PN}/checkpoint
+		"${EROOT}"/var/${PN}
+		"${EROOT}"/var/spool/${PN}/slurmd
+		"${EROOT}"/var/spool/${PN}
+		"${EROOT}"/var/log/${PN}
+		"${EROOT}"/var/tmp/${PN}/${PN}d
+		"${EROOT}"/var/tmp/${PN}
+		"${EROOT}"/run/${PN}
 	)
 	local folder_path
 	for folder_path in ${paths[@]}; do
@@ -247,9 +244,9 @@ pkg_postinst() {
 	done
 	echo
 
-	elog "Please visit the file '/usr/share/doc/${P}/html/configurator.html"
+	elog "Please visit the file '${EROOT}/usr/share/doc/${P}/html/configurator.html"
 	elog "through a (javascript enabled) browser to create a configureation file."
-	elog "Copy that file to /etc/slurm/slurm.conf on all nodes (including the headnode) of your cluster."
+	elog "Copy that file to ${EROOT}/etc/slurm/slurm.conf on all nodes (including the headnode) of your cluster."
 	echo
 	elog "For cgroup support, please see https://www.schedmd.com/slurmdocs/cgroup.conf.html"
 	elog "Your kernel must be compiled with the wanted cgroup feature:"
@@ -259,11 +256,11 @@ pkg_postinst() {
 	elog "        cpuset, memory, devices"
 	elog "    For the accounting plugin:"
 	elog "        cpuacct, memory, blkio"
-	elog "Then, set these options in /etc/slurm/slurm.conf:"
+	elog "Then, set these options in ${EROOT}/etc/slurm/slurm.conf:"
 	elog "    ProctrackType=proctrack/cgroup"
 	elog "    TaskPlugin=task/cgroup"
 	einfo
-	ewarn "Paths were created for slurm. Please use these paths in /etc/slurm/slurm.conf:"
+	ewarn "Paths were created for slurm. Please use these paths in ${EROOT}/etc/slurm/slurm.conf:"
 	for folder_path in ${paths[@]}; do
 		ewarn "    ${folder_path}"
 	done

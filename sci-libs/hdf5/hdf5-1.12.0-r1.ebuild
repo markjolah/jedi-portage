@@ -15,7 +15,7 @@ HOMEPAGE="http://www.hdfgroup.org/HDF5/"
 SRC_URI="http://www.hdfgroup.org/ftp/HDF5/releases/${MAJOR_P}/${MY_P}/src/${MY_P}.tar.bz2"
 
 LICENSE="NCSA-HDF"
-SLOT="0/${PV%%_p*}"
+SLOT="0/${PV%%_p*}"show
 KEYWORDS="~alpha amd64 ~arm arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cxx examples fortran +hl mpi szip threads tools test zlib"
 
@@ -35,6 +35,9 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 CMAKE_BUILD_TYPE=Release
+
+PATCHES=( "${FILESDIR}/${P}-pkgconfig.patch" 
+          "${FILESDIR}/${P}-h5cc.patch" )
 
 pkg_setup() {
     use fortran && fortran-2_pkg_setup
@@ -79,5 +82,3 @@ src_configure() {
         )
     cmake-utils_src_configure
 }
-
-

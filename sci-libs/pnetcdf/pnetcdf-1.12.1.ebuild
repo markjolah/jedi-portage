@@ -15,7 +15,7 @@ RESTRICT="primaryuri"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="fortran"
+IUSE="fortran cxx static"
 
 DEPEND="virtual/mpi"
 RDEPEND="${DEPEND}"
@@ -39,7 +39,9 @@ src_configure() {
     NETCDF_INCLUDE_DIR=$(nc-config --includedir)
     export CPPFLAGS="-I$NETCDF_INCLUDE_DIR"
     econf --disable-netcdf4 \
+        $(use_enable static) \
         --enable-shared=yes \
         $(use_enable fortran) \
+        $(use_enable cxx) \
         --includedir=$EPREFIX/usr/include/pnetcdf
 }

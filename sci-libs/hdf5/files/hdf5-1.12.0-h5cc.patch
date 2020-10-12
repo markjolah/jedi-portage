@@ -1,0 +1,15 @@
+diff --git a/config/cmake/libh5cc.in b/config/cmake/libh5cc.in
+index f462d56..60ee093 100644
+--- a/config/cmake/libh5cc.in
++++ b/config/cmake/libh5cc.in
+@@ -24,9 +24,6 @@ dir=$(
+ ) || exit
+ prg=$dir/$(basename -- "$prg") || exit
+ 
+-printf '%s\n' "$prg"
+-printf 'dir is %s\n' "$dir"
+-
+ export PKG_CONFIG_PATH=$dir/lib/pkgconfig
+ 
+-@_PKG_CONFIG_COMPILER@ `pkg-config --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@-@_PKG_CONFIG_VERSION@` $@
++@_PKG_CONFIG_COMPILER@ `pkg-config --define-variable=prefix=$dir --cflags --libs @_PKG_CONFIG_LIBNAME@` $@

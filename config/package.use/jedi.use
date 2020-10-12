@@ -41,6 +41,7 @@ sys-libs/timezone-data leaps_timezone
 sci-libs/netcdf static-libs
 sci-libs/netcdf-cxx static-libs
 sci-libs/netcdf-fortran static-libs
+sci-libs/pnetcdf static fortran -cxx
 net-misc/curl static-libs
 dev-libs/openssl static-libs
 sys-libs/zlib static-libs
@@ -115,3 +116,4 @@ sys-apps/hwloc -cuda
 sys-apps/hwloc -netloc
 sys-apps/hwloc plugins
 net-misc/openssh scp
+sci-libs/hdf5 tools

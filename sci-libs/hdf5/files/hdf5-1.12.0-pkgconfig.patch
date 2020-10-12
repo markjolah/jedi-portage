@@ -1,0 +1,90 @@
+diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
+index 39f0f3a..32b9a2d 100644
+--- a/c++/src/CMakeLists.txt
++++ b/c++/src/CMakeLists.txt
+@@ -186,11 +186,11 @@ set (_PKG_CONFIG_REQUIRES_PRIVATE "${HDF5_LIB_CORENAME}")
+ 
+ configure_file (
+     ${HDF_RESOURCES_DIR}/libhdf5.pc.in
+-    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_CPP_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_CPP_LIB_CORENAME}.pc
+     @ONLY
+ )
+ install (
+-    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_CPP_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_CPP_LIB_CORENAME}.pc
+     DESTINATION ${HDF5_INSTALL_LIB_DIR}/pkgconfig
+     COMPONENT cpplibraries
+ )
+diff --git a/fortran/src/CMakeLists.txt b/fortran/src/CMakeLists.txt
+index b5d1a60..07dec5f 100644
+--- a/fortran/src/CMakeLists.txt
++++ b/fortran/src/CMakeLists.txt
+@@ -523,11 +523,11 @@ set (_PKG_CONFIG_REQUIRES_PRIVATE "${HDF5_LIB_CORENAME}")
+ 
+ configure_file (
+     ${HDF_RESOURCES_DIR}/libhdf5.pc.in
+-    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_F90_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_F90_LIB_CORENAME}.pc
+     @ONLY
+ )
+ install (
+-    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_F90_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_F90_LIB_CORENAME}.pc
+     DESTINATION ${HDF5_INSTALL_LIB_DIR}/pkgconfig
+     COMPONENT fortlibraries
+ )
+diff --git a/hl/c++/src/CMakeLists.txt b/hl/c++/src/CMakeLists.txt
+index 866f372..d3208fb 100644
+--- a/hl/c++/src/CMakeLists.txt
++++ b/hl/c++/src/CMakeLists.txt
+@@ -99,11 +99,11 @@ set (_PKG_CONFIG_REQUIRES_PRIVATE "${HDF5_HL_LIB_CORENAME}")
+ 
+ configure_file (
+     ${HDF_RESOURCES_DIR}/libhdf5.pc.in
+-    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_CPP_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_CPP_LIB_CORENAME}.pc
+     @ONLY
+ )
+ install (
+-    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_CPP_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_CPP_LIB_CORENAME}.pc
+     DESTINATION ${HDF5_INSTALL_LIB_DIR}/pkgconfig
+     COMPONENT hlcpplibraries
+ )
+diff --git a/hl/src/CMakeLists.txt b/hl/src/CMakeLists.txt
+index 55d84c7..404cba6 100644
+--- a/hl/src/CMakeLists.txt
++++ b/hl/src/CMakeLists.txt
+@@ -123,11 +123,11 @@ set (_PKG_CONFIG_REQUIRES_PRIVATE "${HDF5_LIB_CORENAME}")
+ 
+ configure_file (
+     ${HDF_RESOURCES_DIR}/libhdf5.pc.in
+-    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_LIB_CORENAME}.pc
+     @ONLY
+ )
+ install (
+-    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_HL_LIB_CORENAME}.pc
+     DESTINATION ${HDF5_INSTALL_LIB_DIR}/pkgconfig
+     COMPONENT hllibraries
+ )
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f582056..94fcb94 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1262,11 +1262,11 @@ set (_PKG_CONFIG_REQUIRES_PRIVATE)
+ 
+ configure_file (
+     ${HDF_RESOURCES_DIR}/libhdf5.pc.in
+-    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_LIB_CORENAME}.pc
+     @ONLY
+ )
+ install (
+-    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_LIB_CORENAME}-${HDF5_PACKAGE_VERSION}.pc
++    FILES ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_LIB_CORENAME}.pc
+     DESTINATION ${HDF5_INSTALL_LIB_DIR}/pkgconfig
+     COMPONENT libraries
+ )

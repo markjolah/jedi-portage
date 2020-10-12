@@ -1,0 +1,30 @@
+diff --git a/auxdir/ax_lib_hdf5.m4 b/auxdir/ax_lib_hdf5.m4
+index 89976b5..5e23f68 100644
+--- a/auxdir/ax_lib_hdf5.m4
++++ b/auxdir/ax_lib_hdf5.m4
+@@ -198,7 +198,7 @@ HDF5 support is being disabled (equivalent to --with-hdf5=no).
+         dnl these are empty. Lets roll them both into one.
+ 
+         dnl Look for "HDF5 Version: X.Y.Z"
+-        HDF5_VERSION=$(eval $H5CC -showconfig | $GREP 'HDF5 Version:' \
++        HDF5_VERSION=$(eval pkg-config hdf5 --modversion \
+             | $AWK '{print $[]3}')
+ 
+         dnl A ideal situation would be where everything we needed was
+@@ -210,14 +210,11 @@ HDF5 support is being disabled (equivalent to --with-hdf5=no).
+         dnl (2) Look for "H5_NAME:" tags
+         dnl (3) Look for "AM_NAME:" tags
+         dnl
+-        HDF5_tmp_flags=$(eval $H5CC -showconfig \
+-            | $GREP 'FLAGS\|Extra libraries:' \
++        HDF5_tmp_flags=$(eval pkg-config hdf5 --cflags --lflags \
+             | $AWK -F: '{printf("%s "), $[]2}' )
+ 
+         dnl Find the installation directory and append include/
+-        HDF5_tmp_inst=$(eval $H5CC -showconfig \
+-            | $GREP 'Installation point:' \
+-            | $AWK '{print $[]NF}' )
++        HDF5_tmp_inst=$(eval pkg-config hdf5 --variable=prefix)
+ 
+         dnl Add this to the CPPFLAGS
+         HDF5_CPPFLAGS="-I${HDF5_tmp_inst}/include"
