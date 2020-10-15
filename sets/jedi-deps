@@ -24,3 +24,4 @@ dev-python/pyodc
 sci-libs/fckit
 sci-geosciences/atlas
 dev-python/pyncepbufr
+dev-util/jedicmake

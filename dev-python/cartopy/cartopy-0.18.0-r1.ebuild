@@ -17,6 +17,8 @@ KEYWORDS="amd64"
 IUSE=""
 
 RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
+    >=dev-python/scipy-1.5[${PYTHON_USEDEP},sparse]
+    >=dev-python/pykdtree-1.3.1[${PYTHON_USEDEP}]
     >=sci-libs/Shapely-1.5.6[${PYTHON_USEDEP}]
     >=sci-libs/pyshp-1.1.4[${PYTHON_USEDEP}]
     >=dev-python/six-1.3.0[${PYTHON_USEDEP}]
