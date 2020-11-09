@@ -1,8 +1,1 @@
->=dev-python/marshmallow-3
->=app-admin/eselect-1.4.14
-<virtual/blas-3.8.0-r200
-<virtual/cblas-3.8.0-r200
-<virtual/lapack-3.8.0-r200
-sci-libs/openblas::gentoo
 sys-cluster/openmpi
-#>dev-python/urllib3-1.25.9

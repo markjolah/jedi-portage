@@ -11,9 +11,7 @@ sci-misc/nco
 sci-misc/nccmp
 sci-misc/ncview
 sci-libs/openblas
-sci-libs/blas-reference
-sci-libs/cblas-reference
-sci-libs/lapack-reference
+sci-libs/lapack
 virtual/szip
 dev-vcs/git
 dev-vcs/git-lfs

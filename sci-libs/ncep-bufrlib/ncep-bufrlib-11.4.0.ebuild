@@ -2,15 +2,12 @@
 
 EAPI=7
 
-inherit cmake-utils multilib fortran-2
-
-MY_PN="bufrlib"
-MY_P="${MY_PN}-${PV}"
+inherit git-r3 cmake-utils fortran-2
 
 DESCRIPTION="NCEP bufr library for reading/writing bufr files."
-HOMEPAGE="https://github.com/JCSDA/bufrlib"
-SRC_URI="https://github.com/JCSDA/bufrlib/archive/bufr_v${PV}.tar.gz -> ${MY_P}.tar.gz"
-RESTRICT="primaryuri"
+HOMEPAGE="https://github.com/NOAA-EMC/NCEPLIBS-bufr"
+EGIT_REPO_URI="https://github.com/NOAA-EMC/NCEPLIBS-bufr"
+EGIT_COMMIT="bufr_v${PV}"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -21,7 +18,7 @@ DEPEND=""
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-S=$WORKDIR/${MY_PN}-bufr_v${PV}
+PATCHES=( "${FILESDIR}/${P}-include-installdirs.patch" )
 
 pkg_setup() {
     fortran-2_pkg_setup
@@ -29,5 +26,7 @@ pkg_setup() {
 
 src_configure() {
     export FFLAGS=${CFLAGS}
+    local mycmakeargs=( BUILD_SHARED_LIBS=1 )
+
     cmake-utils_src_configure
 }
