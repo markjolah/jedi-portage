@@ -119,3 +119,4 @@ net-misc/openssh scp
 sci-libs/hdf5 tools
 dev-python/scipy sparse
 dev-python/cartopy -python_targets_python3_9
+sci-geosciences/atlas cgal

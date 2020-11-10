@@ -22,6 +22,8 @@ RDEPEND=""
 DEPEND=" dev-python/setuptools[${PYTHON_USEDEP}]
 	 sci-libs/ncep-bufrlib "
 
+PATCHES=( "${FILESDIR}/${P}-ncep-burfrlib.patch" )
+
 python_configure_all() {
-    export bufrlib_ROOT="/"
+    export bufrlib_ROOT="/usr"
 }
