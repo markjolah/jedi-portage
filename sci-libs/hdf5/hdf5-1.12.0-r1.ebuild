@@ -36,7 +36,8 @@ S="${WORKDIR}/${MY_P}"
 
 CMAKE_BUILD_TYPE=Release
 
-PATCHES=( "${FILESDIR}/${P}-pkgconfig.patch" 
+PATCHES=( "${FILESDIR}/${P}-pkgconfig.patch"
+          "${FILESDIR}/${P}-pkgconfig-2.patch"
           "${FILESDIR}/${P}-h5cc.patch" )
 
 pkg_setup() {

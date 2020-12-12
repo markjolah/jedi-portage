@@ -1,5 +1,5 @@
+app-text/pelican
 dev-python/numpy
-#sci-libs/scipy
 dev-python/matplotlib
 dev-python/pandas
 dev-python/pytables
@@ -13,10 +13,9 @@ dev-python/xarray
 dev-python/psutil
 dev-python/boto3
 dev-python/progressbar2
-dev-python/cartopy
 dev-python/tzlocal
 dev-python/pip
 dev-python/virtualenv
-app-text/pelican
 dev-python/awscli
 dev-python/h5netcdf
+sci-libs/cartopy

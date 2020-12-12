@@ -1,8 +1,8 @@
 diff --git a/setup.py b/setup.py
-index 8fe26406..02785ead 100755
+index 7dbe583..6602c97 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -48,7 +48,7 @@ SETUP_REQUIRES = [
+@@ -49,7 +49,7 @@ SETUP_REQUIRES = [
      f"Cython >=0.29; python_version<'3.8'",
      f"Cython >=0.29.14; python_version>='3.8'",
  ] + [

@@ -6,8 +6,8 @@ EAPI=7
 inherit git-r3 cmake-utils flag-o-matic fortran-2
 
 DESCRIPTION="A Fortran toolkit for interoperating Fortran with C/C++"
-HOMEPAGE="https://github.com/JCSDA/fckit"
-EGIT_REPO_URI="https://github.com/JCSDA/fckit"
+HOMEPAGE="https://github.com/JCSDA-internal/fckit"
+EGIT_REPO_URI="https://github.com/JCSDA-internal/fckit"
 EGIT_BRANCH="release-stable"
 EGIT_COMMIT="8502aaeec5b3012ab337b8b3f696733037d4072b"
 
@@ -31,6 +31,7 @@ src_configure() {
     CMAKE_BUILD_TYPE="Release"
     local mycmakeargs=(
         -DINSTALL_LIB_DIR="$(get_libdir)"
+	-Decbuild_DIR=/usr/lib64/cmake/ecbuild
     )
     cmake-utils_src_configure
 }

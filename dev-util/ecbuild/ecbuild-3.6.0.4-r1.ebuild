@@ -3,13 +3,12 @@ EAPI=7
 inherit git-r3 cmake-utils
 
 DESCRIPTION="ECMWF CMake build scripts and modules"
-HOMEPAGE="https://github.com/JCSDA/ecbuild"
+HOMEPAGE="https://github.com/JCSDA-internal/ecbuild"
 # SRC_URI="https://github.com/ecmwf/ecbuild/archive/${PV}.tar.gz"
 # RESTRICT="primaryuri"
-EGIT_REPO_URI="https://github.com/JCSDA/ecbuild"
+EGIT_REPO_URI="https://github.com/JCSDA-internal/ecbuild"
 #EGIT_COMMIT="$(ver_cut 1-3).jcsda$(ver_cut 4)"
-EGIT_BRANCH="hotfix/use_cmake_install_libdir"
-#EGIT_COMMIT="7171f91f3242ecfb08380bc1e76d298c6febed41"
+EGIT_COMMIT="5abe455feec18fc402e07b9c4704467785c37e7a"
 
 LICENSE="Apache-2.0"
 SLOT="0"

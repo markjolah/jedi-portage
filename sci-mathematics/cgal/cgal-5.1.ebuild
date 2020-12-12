@@ -15,18 +15,17 @@ RESTRICT="primaryuri"
 LICENSE="LGPL-3 GPL-3 Boost-1.0"
 SLOT="0/13"
 KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples +gmp mpfi ntl qt5"
+IUSE="doc examples gmp mpfi ntl qt5"
 
 RDEPEND="
 	dev-cpp/eigen
 	dev-libs/boost:=[threads]
-	dev-libs/mpfr:0=
 	sys-libs/zlib:=
 	x11-libs/libX11:=
 	virtual/glu:=
 	virtual/opengl:=
-	gmp? ( dev-libs/gmp:=[cxx] )
-	mpfi? ( sci-libs/mpfi )
+	gmp? ( dev-libs/gmp:=[cxx] dev-libs/mpfr:0= )
+	mpfi? ( sci-libs/mpfi dev-libs/mpfr:0= )
 	ntl? ( dev-libs/ntl )
 	qt5? (
 		dev-qt/qtcore:5
@@ -61,6 +60,7 @@ src_configure() {
 		-DWITH_LEDA=OFF
 		-DWITH_Eigen3=ON
 		-DWITH_ZLIB=ON
+		-DCGAL_DISABLE_GMP="$(usex !gmp)"
 		-DWITH_GMP="$(usex gmp)"
 		-DWITH_GMPXX="$(usex gmp)"
 		-DWITH_MPFI="$(usex mpfi)"

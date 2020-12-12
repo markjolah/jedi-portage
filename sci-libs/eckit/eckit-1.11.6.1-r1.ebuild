@@ -6,10 +6,10 @@ EAPI=7
 inherit git-r3 cmake-utils flag-o-matic
 
 DESCRIPTION="A C++ toolkit that supports development of tools and applications at ECMWF"
-HOMEPAGE="https://github.com/JCSDA/eckit"
-EGIT_REPO_URI="https://github.com/JCSDA/eckit"
+HOMEPAGE="https://github.com/JCSDA-internal/eckit"
+EGIT_REPO_URI="https://github.com/JCSDA-internal/eckit"
 EGIT_BRANCH="release-stable"
-EGIT_COMMIT="48be4ad8599891ca7bd78aec308222d8cc57bb44"
+#EGIT_COMMIT="282ce146c7b3b298ead3310109c31fc9ed568ced"
 
 LICENSE="Apache-2.0"
 SLOT="0"
