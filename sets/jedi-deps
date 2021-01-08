@@ -23,3 +23,6 @@ sci-libs/fckit
 sci-geosciences/atlas
 dev-python/pyncepbufr
 dev-util/jedicmake
+dev-cpp/nlohmann_json
+dev-cpp/gsl-lite
+dev-cpp/json-schema-validator

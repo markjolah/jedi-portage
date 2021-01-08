@@ -1,0 +1,35 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 414a9b2..fbcd562 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,8 @@ set(PROJECT_VERSION 2.1.0)
+ 
+ cmake_minimum_required(VERSION 3.2)
+ 
++include(GNUInstallDirs)
++
+ option(BUILD_TESTS      "Build tests"    ON)
+ option(BUILD_EXAMPLES   "Build examples" ON)
+ 
+@@ -125,9 +127,9 @@ endif()
+ if(JSON_VALIDATOR_INSTALL)
+     install(TARGETS nlohmann_json_schema_validator
+             EXPORT ${PROJECT_NAME}Targets
+-            LIBRARY DESTINATION lib
+-            ARCHIVE DESTINATION lib
+-            RUNTIME DESTINATION bin)
++            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
++            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+ 
+     install(FILES src/nlohmann/json-schema.hpp
+             DESTINATION include/nlohmann)
+@@ -155,7 +157,7 @@ if(JSON_VALIDATOR_INSTALL)
+     # Set Up the Project Targets and Config Files for CMake
+ 
+     # Set the install path to the cmake config files
+-    set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_PREFIX}/lib/cmake/${PROJECT_NAME})
++    set(INSTALL_CMAKE_DIR ${CMAKE_INSTALL_FULL_LIBDIR}/cmake/${PROJECT_NAME})
+ 
+     # Create the ConfigVersion file
+     include(CMakePackageConfigHelpers) # write_basic_package_version_file

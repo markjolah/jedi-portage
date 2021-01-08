@@ -1,1 +1,2 @@
 sys-cluster/openmpi
+>=sci-mathematics/cgal-5.1

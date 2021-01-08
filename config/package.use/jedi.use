@@ -121,3 +121,4 @@ dev-python/scipy sparse
 dev-python/cartopy -python_targets_python3_9
 sci-geosciences/atlas cgal
 sci-mathematics/cgal -gmp
+dev-qt/qt-creator lsp beautifier perfprofiler
