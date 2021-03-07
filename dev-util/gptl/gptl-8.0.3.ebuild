@@ -18,11 +18,14 @@ IUSE="+pmpi papi"
 DEPEND="virtual/mpi
         papi? ( dev-libs/papi )"
 
+PATCHES=( "${FILESDIR}/${P}-perf_event_paranoid.patch" )
+
 pkg_setup() {
     fortran-2_pkg_setup
 }
 
 src_configure() {
+  autoreconf
   export CC=mpicc
   export FC=mpif90
   econf \
