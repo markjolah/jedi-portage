@@ -118,6 +118,7 @@ multilib_src_configure() {
 		--with-pm=hydra \
 		--disable-fast \
 		--enable-versioning \
+		--disable-wrapper-rpath \
 		$(use_enable romio) \
 		$(use_enable cxx) \
 		$(use_enable fortran fortran all)

@@ -26,3 +26,4 @@ dev-util/jedicmake
 dev-cpp/nlohmann_json
 dev-cpp/gsl-lite
 #dev-cpp/json-schema-validator
+dev-python/sphinxcontrib-bibtex

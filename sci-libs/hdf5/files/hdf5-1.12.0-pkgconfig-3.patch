@@ -1,0 +1,13 @@
+diff --git a/fortran/src/CMakeLists.txt b/fortran/src/CMakeLists.txt
+index b1475e4..5caae5a 100644
+--- a/fortran/src/CMakeLists.txt
++++ b/fortran/src/CMakeLists.txt
+@@ -527,7 +527,7 @@ set (_PKG_CONFIG_REQUIRES "${HDF5_LIB_CORENAME}")
+ set (_PKG_CONFIG_REQUIRES_PRIVATE "${HDF5_LIB_CORENAME}")
+ 
+ configure_file (
+-    ${HDF_RESOURCES_DIR}/libhdf5.pc.in
++    ${HDF_RESOURCES_DIR}/libhdf5_fortran.pc.in
+     ${HDF5_BINARY_DIR}/CMakeFiles/${HDF5_F90_LIB_CORENAME}.pc
+     @ONLY
+ )

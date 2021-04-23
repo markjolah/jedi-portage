@@ -38,6 +38,8 @@ CMAKE_BUILD_TYPE=Release
 
 PATCHES=( "${FILESDIR}/${P}-pkgconfig.patch"
           "${FILESDIR}/${P}-pkgconfig-2.patch"
+          "${FILESDIR}/${P}-pkgconfig-3.patch"
+          "${FILESDIR}/${P}-cmake-pkg-config.patch"
           "${FILESDIR}/${P}-h5cc.patch" )
 
 pkg_setup() {
@@ -68,7 +70,7 @@ src_configure() {
             -DCMAKE_INSTALL_PREFIX=$EPREFIX/usr
             -DBUILD_SHARED_LIBS=1
             -DBUILD_STATIC_LIBS=0
-            -DHDF5_INSTALL_INCLUDE_DIR=$EPREFIX/usr/include
+            -DHDF5_INSTALL_INCLUDE_DIR=$EPREFIX/usr/include/hdf5
             -DHDF5_INSTALL_LIB_DIR=$EPREFIX/usr/lib64
             -DHDF5_ENABLE_Z_LIB_SUPPORT=$(usex zlib)
             -DHDF5_ENABLE_SZIP_SUPPORT=$(usex szip)
